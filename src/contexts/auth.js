@@ -5,7 +5,7 @@ export const AuthContext = createContext({})
 
 const AuthProvider = ({ children }) => {
     const [produtos, setProdutos] = useState([])
-    const commerce = new Commerce('pk_test_3028616cd3d7d2a8e35e445ef2f3d985c3a267fc23f94');
+    const commerce = new Commerce('pk_test_30296ddbc61cf7d7e9a9dd232f0aecf76a93431af069a');
     useEffect(() => {
         commerce.products.list().then((product) => setProdutos(product.data))
     }, [])
