@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, StatusBar } from 'react-native';
+import { View, Text } from 'react-native';
 import styles from "./styles"
+import Header from '../../components/Cart/Header';
+import Body from '../../components/Cart/Body';
 
 const Cart = () => {
 
     return(
         <View style={styles.cart}>
-            <View style={styles.header}>
-                <Text style={styles.title}>CARRINHO</Text>
-            </View>
+            <Header/>
+            <Body />
         </View>
     )
 }
