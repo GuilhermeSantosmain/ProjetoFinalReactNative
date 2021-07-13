@@ -1,15 +1,52 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
+import Products from '../screens/Products'
+import Login from '../screens/Login'
+import Icon from '@expo/vector-icons/AntDesign';
+import Cart from '../screens/Cart'
 
-const AppStack = createStackNavigator();
+const AuthBottom = createBottomTabNavigator();
 
-function AppRoutes() {
+const icons = {
+    Home: {
+        name: 'home'
+    },
+    Perfil: {
+        name: 'user'
+    },
+    Products: {
+        name: 'tags'
+    },
+    Cart: {
+        name: 'shoppingcart'
+    },
+}
+
+function AuthRoutes() {
     return (
-        <AppStack.Navigator>
-            <AppStack.Screen name="Home" component={Home} />
-        </AppStack.Navigator>
+        <AuthBottom.Navigator
+            screenOptions={({ route }) => ({
+                tabBarIcon: ({ color, size }) => {
+                    const { name } = icons[route.name];
+                    return <Icon name={name} color={color} size={size} />
+                }
+            })}
+            tabBarOptions={{
+                style: {
+                    backgroundColor: '#121212'
+                },
+                activeTintColor: '#FFF',
+            }}
+        >
+
+
+            <AuthBottom.Screen name="Home" component={Home} />
+            <AuthBottom.Screen name="Products" component={Products} />
+            <AuthBottom.Screen name="Perfil" component={Login} />
+            <AuthBottom.Screen name="Cart" component={Cart} />
+        </AuthBottom.Navigator>
     );
 }
 
-export default AppRoutes;
+export default AuthRoutes;
