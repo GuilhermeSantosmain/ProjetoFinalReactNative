@@ -16,9 +16,10 @@ function Login() {
                 <View style={styles.inputTxt}>
                     <TextInput style={styles.input} />
                 </View>
-                <View>
+                <View style={styles.msgCadastro}>
+                    <Text style={styles.msg}>Ainda não tem cadastro? </Text>
                     <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
-                        <Text>Cadastro</Text>
+                        <Text style={styles.msgBtn}>Cadastre-se</Text>
 
                     </TouchableOpacity>
                 </View>
@@ -54,6 +55,20 @@ const styles = StyleSheet.create({
         height: 40,
         padding: 10
     },
+
+    msgCadastro:{
+        marginTop: 20,
+        flexDirection: 'row',
+    },
+
+    msg:{
+        fontSize: 16
+    },
+
+    msgBtn:{
+        fontSize: 16,
+        color: '#29d97b' 
+    }
 
 });
 
