@@ -1,40 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import Commerce from '@chec/commerce.js';
-import Products from './src/components/Products';
-
-
+import { NavigationContainer } from '@react-navigation/native';
+import { View, StatusBar } from 'react-native';
+import AuthProvider from './src/contexts/auth';
+import Routes from './src/routes/index';
 
 export default function App() {
-
-  const [produtos, setProdutos] = useState([])
-  const commerce = new Commerce('pk_test_3028616cd3d7d2a8e35e445ef2f3d985c3a267fc23f94');
-
-
-  useEffect(() => {
-    commerce.products.list().then((product) => setProdutos(product.data))
-  })
-
-
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={produtos}
-        renderItem={({ item }) => <Products item={item} />}
-        keyExtractor={item => item.id}
-      />
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <NavigationContainer>
+      <AuthProvider>
+        <StatusBar backgroundColor="#131313" barStyle="light-content" />
+        <Routes />
+      </AuthProvider>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
