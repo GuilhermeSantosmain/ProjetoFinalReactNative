@@ -4,13 +4,20 @@ import { NavigationContainer } from '@react-navigation/native';
 import { View, StatusBar } from 'react-native';
 import AuthProvider from './src/contexts/auth';
 import Routes from './src/routes/index';
+import { createStackNavigator } from '@react-navigation/stack';
+import Signin from './src/screens/Signin';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <AuthProvider>
         <StatusBar backgroundColor="#131313" barStyle="light-content" />
-        <Routes />
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Routes} options={{ headerShown: false }} />
+          <Stack.Screen name="Cadastro" component={Signin} />
+        </Stack.Navigator>
       </AuthProvider>
     </NavigationContainer>
   );

@@ -1,15 +1,18 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 
 function Login() {
+    const navigation = useNavigation();
     return (
         <View>
-            <Text>
-                Login
-            </Text>
-        </View>
+            <TouchableOpacity onPress={() => navigation.navigate('Cadastro')} >
+                <Text>
+                    Cadastro
+                </Text>
+            </TouchableOpacity>
+        </View >
     );
 }
 

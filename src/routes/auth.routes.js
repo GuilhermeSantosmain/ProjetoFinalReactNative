@@ -15,11 +15,8 @@ const icons = {
     Home: {
         name: 'home'
     },
-    Signin: {
-        name: 'adduser'
-    },
-    Login: {
-        name: 'login'
+    Perfil: {
+        name: 'user'
     },
     Products: {
         name: 'tags'
@@ -48,8 +45,7 @@ function AuthRoutes() {
 
 
             <AuthBottom.Screen name="Home" component={Home} />
-            <AuthBottom.Screen name="Signin" component={Signin} />
-            <AuthBottom.Screen name="Login" component={Login} />
+            <AuthBottom.Screen name="Perfil" component={Login} />
             <AuthBottom.Screen name="Products" component={Products} />
             <AuthBottom.Screen name="Cart" component={Cart} />
         </AuthBottom.Navigator>
