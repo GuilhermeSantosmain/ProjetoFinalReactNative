@@ -1,13 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState, useEffect } from 'react';
+import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import Commerce from '@chec/commerce.js';
+import Products from './src/components/Products';
+
+
 
 export default function App() {
+
+  const [produtos, setProdutos] = useState([])
+  const commerce = new Commerce('pk_test_3028616cd3d7d2a8e35e445ef2f3d985c3a267fc23f94');
+
+
+  useEffect(() => {
+    commerce.products.list().then((product) => setProdutos(product.data))
+  })
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={produtos}
+        renderItem={({ item }) => <Products item={item} />}
+        keyExtractor={item => item.id}
+      />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
