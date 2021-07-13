@@ -6,6 +6,7 @@ import Signin from '../screens/Signin'
 import Products from '../screens/Products'
 import Login from '../screens/Login'
 import Icon from '@expo/vector-icons/AntDesign';
+import Cart from '../screens/Cart'
 
 const AuthStack = createStackNavigator()
 const AuthBottom = createBottomTabNavigator();
@@ -44,10 +45,13 @@ function AuthRoutes() {
                 activeTintColor: '#FFF',
             }}
         >
+
+
             <AuthBottom.Screen name="Home" component={Home} />
             <AuthBottom.Screen name="Signin" component={Signin} />
             <AuthBottom.Screen name="Login" component={Login} />
             <AuthBottom.Screen name="Products" component={Products} />
+            <AuthBottom.Screen name="Cart" component={Cart} />
         </AuthBottom.Navigator>
     );
 }
