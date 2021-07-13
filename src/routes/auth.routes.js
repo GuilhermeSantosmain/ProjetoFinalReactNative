@@ -1,14 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/Home';
-import Signin from '../screens/Signin'
 import Products from '../screens/Products'
 import Login from '../screens/Login'
 import Icon from '@expo/vector-icons/AntDesign';
 import Cart from '../screens/Cart'
 
-const AuthStack = createStackNavigator()
 const AuthBottom = createBottomTabNavigator();
 
 const icons = {
@@ -42,12 +39,9 @@ function AuthRoutes() {
                 activeTintColor: '#FFF',
             }}
         >
-
-
             <AuthBottom.Screen name="Home" component={Home} />
-            <AuthBottom.Screen name="Perfil" component={Login} />
             <AuthBottom.Screen name="Products" component={Products} />
-            <AuthBottom.Screen name="Cart" component={Cart} />
+            <AuthBottom.Screen name="Perfil" component={Login} />
         </AuthBottom.Navigator>
     );
 }
