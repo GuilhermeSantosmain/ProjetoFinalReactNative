@@ -39,7 +39,11 @@ const AuthProvider = ({ children }) => {
                 setUser(JSON.parse(storageUser))
             }
         }
-
+        async function loadDatabase() {
+            await http.get('produto/todos').then((response) => setProdutos(response.data)).catch(error => console.log(error))
+        }
+        console.warn(produtos)
+        loadDatabase()
         loadStorage()
     }, [])
 
@@ -92,7 +96,7 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ produtos, signed: !!user, user, signIn, logIn, logOut }} >
+        <AuthContext.Provider value={{ produtos, signed: !!user, user, signIn, logIn, logOut, http }} >
             {children}
         </AuthContext.Provider>
     );

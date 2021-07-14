@@ -25,13 +25,13 @@ function Signin() {
 
             <View style={styles.txts}>
                 <View style={styles.inputTxt} >
-                    <TextInput placeholder="Digite seu nome" style={styles.input} onChange={(e) => setNome(e.target.value)} />
+                    <TextInput placeholder="Digite seu nome" style={styles.input} onChangeText={(e) => setNome(e)} />
                 </View>
                 <View style={styles.inputTxt} >
-                    <TextInput placeholder="Seu E-mail" style={styles.input} onChange={(e) => setEmail(e.target.value)} />
+                    <TextInput placeholder="Seu E-mail" style={styles.input} onChangeText={(e) => setEmail(e)} />
                 </View>
                 <View style={styles.inputTxt}>
-                    <TextInput placeholder="Sua senha" style={styles.input} onChange={(e) => setPassword(e.target.value)} />
+                    <TextInput placeholder="Sua senha" style={styles.input} onChangeText={(e) => setPassword(e)} />
                 </View>
                 <View style={styles.msgCadastro}>
 
@@ -84,12 +84,12 @@ const styles = StyleSheet.create({
 
     msgBtn: {
         fontSize: 20,
-        fontWeight: 500,
+        fontWeight: '500',
         color: '#fff',
         padding: 10,
     },
 
-    btn:{
+    btn: {
         borderColor: '#000',
         borderWidth: 0.5,
         borderRadius: 10,
