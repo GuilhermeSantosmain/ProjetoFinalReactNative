@@ -25,6 +25,18 @@ const itens = [
         nome: 'Tênis Nike Air Zoom G.T. Cut Unissex',
         preco: 'R$ 1.099,99'
     },
+    {
+        id: 'ABCDEF',
+        url: 'https://images.lojanike.com.br/500x500/produto/tenis-kyrie-7-seasonal-CZ0141-100-1.jpg',
+        nome: 'Tênis Nike Kyrie 7 Masculino',
+        preco: 'R$ 749,99'
+    },
+    {
+        id: 'ABCDEFG',
+        url: 'https://images.lojanike.com.br/500x500/produto/tenis-nike-air-max-zm950-masculino-CJ6700-001-1.jpg',
+        nome: 'Tênis Nike Air Max ZM950 Masculino',
+        preco: 'R$ 619,99 '
+    },
 ]
 
 const renderItem = ({ item }) => (
@@ -66,10 +78,6 @@ const Home = () => {
                     />
                 </SafeAreaView>
       
-
-
-      
-
         </View>
     )
 }
@@ -82,13 +90,16 @@ const styles = StyleSheet.create({
     },
 
     img:{ 
-        width: 100,
-        height:60,
+        width: 120,
+        height:70,
     },
 
     iconsBtn:{
-        width: 150
+        width: 150,
+    },
+    linhaIcons:{
+        marginLeft: 15,
     }
 
-
+    
 })
