@@ -22,7 +22,7 @@ export default class Slider extends React.Component{
        return (
            <View style={style.container}>
                <ScrollView
-                pagingEnabled
+                 showsHorizontalScrollIndicator={false}
                 horizontal
                 onScroll={this.change}
                 style={style.container} 

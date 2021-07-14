@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { View, FlatList, Text, StyleSheet, TouchableOpacity, Image, SafeAreaView } from 'react-native'
 import Products from '../../components/Products'
 import { AuthContext } from '../../contexts/auth'
-
+import { useNavigation } from '@react-navigation/native';
 
 
 const itens = [
@@ -56,11 +56,11 @@ const renderItem = ({ item }) => (
 const ScrollItens = () => {
     const { produtos } = useContext(AuthContext)
 
-
+    const navigation = useNavigation();
   
 
     return (
-        <View>
+        <View style={styles.container}>
             {/* <FlatList
                 data={produtos}
                 renderItem={({ item }) => <Products item={item} />}
@@ -69,7 +69,7 @@ const ScrollItens = () => {
             <View style={styles.enunciadoGeral}>
                 <View style={styles.tituloLinha}>
                     <Text style={styles.tituloNovidade}>NOVIDADES</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Products')}>
                         <Text style={styles.tituloTudo}>Ver tudo</Text>
                     </TouchableOpacity>
                 </View>
@@ -94,7 +94,8 @@ export default ScrollItens;
 
 const styles = StyleSheet.create({
     container:{
-        flex: 1,
+        backgroundColor: '#fff',
+        marginTop: 10
     },
 
     img:{ 
