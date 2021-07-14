@@ -10,7 +10,6 @@ const Home = () => {
     const { logOut, user } = useContext(AuthContext)
     const [perfil, setPerfil] = useState(user)
     const [adm, setAdm] = useState(false)
-
     useEffect(() => {
         async function userType() {
             await firebase.database().ref(`users/${perfil.uid}`).on('value', (snapshot) => {
