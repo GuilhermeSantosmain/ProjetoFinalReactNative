@@ -5,7 +5,7 @@ import Products from '../screens/Products'
 import Profile from '../screens/Profile'
 import Icon from '@expo/vector-icons/AntDesign';
 import Cart from '../screens/Cart'
-import ProductRegister from '../screens/ProductRegister';
+
 
 
 const AuthBottom = createBottomTabNavigator();
@@ -22,10 +22,7 @@ const icons = {
     },
     Cart: {
         name: 'shoppingcart'
-    },
-    ProductRegister: {
-        name: 'shoppingcart'
-    },
+    }
 }
 
 function AuthRoutes() {
@@ -48,9 +45,9 @@ function AuthRoutes() {
 
             <AuthBottom.Screen name="Home" component={Home} />
             <AuthBottom.Screen name="Products" component={Products} />
-            <AuthBottom.Screen name="Perfil" component={Profile} />
             <AuthBottom.Screen name="Cart" component={Cart} />
-            <AuthBottom.Screen name="ProductRegister" component={ProductRegister} />
+            <AuthBottom.Screen name="Perfil" component={Profile} />
+
         </AuthBottom.Navigator>
     );
 }

@@ -46,9 +46,9 @@ const AuthProvider = ({ children }) => {
                         let data = {
                             uid: uid,
                             nome: snapshot.val().nome,
-                            email: value.user.email
+                            email: value.user.email,
+                            auth: false
                         }
-
                         setUser(data);
                         storageUser(data)
                     })

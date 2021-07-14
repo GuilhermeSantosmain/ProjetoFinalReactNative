@@ -6,6 +6,8 @@ import AuthProvider from './src/contexts/auth';
 import Routes from './src/routes/index';
 import { createStackNavigator } from '@react-navigation/stack';
 import Signin from './src/screens/Signin';
+import ProductRegister from './src/screens/ProductRegister';
+import CategoryRegister from './src/screens/CategoryRegister';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +19,8 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen name="Home" component={Routes} options={{ headerShown: false }} />
           <Stack.Screen name="Cadastro" component={Signin} />
+          <Stack.Screen name="ProductRegister" component={ProductRegister} />
+          <Stack.Screen name="CategoryRegister" component={CategoryRegister} />
         </Stack.Navigator>
       </AuthProvider>
     </NavigationContainer>
