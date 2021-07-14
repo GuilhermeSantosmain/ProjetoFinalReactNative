@@ -24,25 +24,24 @@ export const AuthContext = createContext({})
 
 const AuthProvider = ({ children }) => {
     const [produtos, setProdutos] = useState([])
+    const [categorias, setCategorias] = useState([])
     const [user, setUser] = useState(null)
     const http = axios.create({
-        baseURL: 'http://localhost:8080/'
+        baseURL: 'http://192.168.0.6:8080',
     })
-
-
 
     useEffect(() => {
         async function loadStorage() {
             const storageUser = await AsyncStorage.getItem('Auth_user')
-
             if (storageUser) {
                 setUser(JSON.parse(storageUser))
             }
         }
         async function loadDatabase() {
-            await http.get('produto/todos').then((response) => setProdutos(response.data)).catch(error => console.log(error))
+            await http.get('produto/todos').then((response) => setProdutos(response.data)).catch(error => console.warn(error))
+            await http.get('categoria/todas').then((response) => { setCategorias(response.data) }).catch(error => console.warn(error))
         }
-        console.warn(produtos)
+
         loadDatabase()
         loadStorage()
     }, [])
@@ -96,7 +95,7 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ produtos, signed: !!user, user, signIn, logIn, logOut, http }} >
+        <AuthContext.Provider value={{ produtos, signed: !!user, user, signIn, logIn, logOut, http, categorias }} >
             {children}
         </AuthContext.Provider>
     );
