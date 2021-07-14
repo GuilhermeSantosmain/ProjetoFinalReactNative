@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     tituloTudo:{
         fontSize: 16,
         textDecorationLine: 'underline',
-        fontWeight: '500',
+        fontWeight: '700',
     },  
 
     enunciadoGeral:{
