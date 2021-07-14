@@ -5,7 +5,7 @@ const Products = (props) => {
     return (
         <View>
             <Text>
-                {props.item.name}
+                {props.item.nome}
             </Text>
         </View>
     )

@@ -2,9 +2,11 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Products from '../screens/Products'
-import Login from '../screens/Login'
+import Profile from '../screens/Profile'
 import Icon from '@expo/vector-icons/AntDesign';
 import Cart from '../screens/Cart'
+import ProductRegister from '../screens/ProductRegister';
+
 
 const AuthBottom = createBottomTabNavigator();
 
@@ -19,6 +21,9 @@ const icons = {
         name: 'tags'
     },
     Cart: {
+        name: 'shoppingcart'
+    },
+    ProductRegister: {
         name: 'shoppingcart'
     },
 }
@@ -43,8 +48,9 @@ function AuthRoutes() {
 
             <AuthBottom.Screen name="Home" component={Home} />
             <AuthBottom.Screen name="Products" component={Products} />
-            <AuthBottom.Screen name="Perfil" component={Login} />
+            <AuthBottom.Screen name="Perfil" component={Profile} />
             <AuthBottom.Screen name="Cart" component={Cart} />
+            <AuthBottom.Screen name="ProductRegister" component={ProductRegister} />
         </AuthBottom.Navigator>
     );
 }

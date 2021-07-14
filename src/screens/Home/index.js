@@ -6,13 +6,14 @@ import { AuthContext } from '../../contexts/auth'
 const Home = () => {
     const { produtos } = useContext(AuthContext)
 
+
     return (
         <View>
-            <FlatList
+            {/* <FlatList
                 data={produtos}
                 renderItem={({ item }) => <Products item={item} />}
-                keyExtractor={item => item.id}
-            />
+                keyExtractor={item => item.key}
+            /> */}
         </View>
     )
 }
