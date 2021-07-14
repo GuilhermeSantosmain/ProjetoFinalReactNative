@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import firebase from 'firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import 'firebase/database'
+import axios from 'axios';
 
 let firebaseConfig = {
     apiKey: "AIzaSyC8mNFs5TrKkJUaINQgD7j52y1JlKAPimk",
@@ -24,6 +25,9 @@ export const AuthContext = createContext({})
 const AuthProvider = ({ children }) => {
     const [produtos, setProdutos] = useState([])
     const [user, setUser] = useState(null)
+    const http = axios.create({
+        baseURL: 'http://localhost:8080/'
+    })
 
     useEffect(() => {
         async function loadStorage() {
@@ -86,7 +90,7 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ produtos, signed: !!user, user, signIn, logIn, logOut }} >
+        <AuthContext.Provider value={{ produtos, signed: !!user, user, signIn, logIn, logOut, http }} >
             {children}
         </AuthContext.Provider>
     );
