@@ -3,18 +3,17 @@ import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 
-
 function Login() {
     const navigation = useNavigation();
     return (
         <View style={styles.inputs}>
 
             <View style={styles.txts}>
-                <View style={styles.inputTxt}>
-                    <TextInput style={styles.input} />
+                <View  style={styles.inputTxt}>
+                    <TextInput placeholder="E-mail"  style={styles.input} />
                 </View>
                 <View style={styles.inputTxt}>
-                    <TextInput style={styles.input} />
+                    <TextInput placeholder="Senha" textDecorationLine='none' style={styles.input} />
                 </View>
                 <View style={styles.msgCadastro}>
                     <Text style={styles.msg}>Ainda não tem cadastro? </Text>
@@ -41,19 +40,19 @@ const styles = StyleSheet.create({
 
     inputTxt: {
         borderColor: '#000',
-        borderWidth: 2,
+        borderWidth: 1,
         borderRadius: 10,
         width: 250,
         padding: 10,
-        marginBottom: 20
+        marginBottom: 20,
+
     },
 
     input: {
-        borderColor: '#000',
-        borderBottomWidth: 2,
         width: '100%',
-        height: 40,
-        padding: 10
+        height: 35,
+        padding: 3,
+        textDecorationLine:'none'
     },
 
     msgCadastro:{
