@@ -6,11 +6,17 @@ import { AuthContext } from '../../contexts/auth'
 
 function CategoryRegister() {
     const navigation = useNavigation();
-    const { } = useContext(AuthContext)
-
-    const [produtc, setNewCategory] = useState('')
+    const { http, setCategorias } = useContext(AuthContext)
+    const [nomeCategoria, setNomeCategoria] = useState('')
+    const [descricaoCategoria, setDescricaoCategoria] = useState('')
 
     async function handleNewCategory() {
+        const categoria = {
+            nome: nomeCategoria,
+            descricao: descricaoCategoria
+        }
+        await http.post('categoria', categoria)
+            .catch(error => console.warn(error))
 
     }
 
@@ -19,11 +25,22 @@ function CategoryRegister() {
 
             <View style={styles.txts}>
                 <View style={styles.inputTxt} >
-                    <TextInput style={styles.input} onChange={(e) => setNewCategory(e.target.value)} />
+                    <View style={styles.inputTxtRow}>
+                        <Text>Nome da categoria</Text>
+                        <TextInput style={styles.input} onChangeText={(e) => setNomeCategoria(e)} value={nomeCategoria} />
+                    </View>
+
+                    <View style={styles.inputTxtRow}>
+                        <Text>Descricao</Text>
+                        <TextInput style={styles.input} onChangeText={(e) => setDescricaoCategoria(e)} value={descricaoCategoria} />
+                    </View>
+
+
+
                 </View>
                 <View style={styles.msgCadastro}>
                     <TouchableOpacity onPress={handleNewCategory}>
-                        <Text style={styles.msgBtn}>Cadastrar</Text>
+                        <Text style={styles.msgBtn}>Cadastrar Categoria</Text>
 
                     </TouchableOpacity>
                 </View>

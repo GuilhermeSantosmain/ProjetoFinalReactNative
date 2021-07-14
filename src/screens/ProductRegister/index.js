@@ -3,11 +3,12 @@ import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Switch } from 'react-native';
 import { AuthContext } from '../../contexts/auth'
 import { Picker } from '@react-native-picker/picker';
+import { useEffect } from 'react/cjs/react.development';
 
 
 function ProductRegister() {
     const navigation = useNavigation();
-    const { http, categorias } = useContext(AuthContext)
+    const { http, categorias, setCategorias } = useContext(AuthContext)
 
     const [codigo, setCodigo] = useState('')
     const [descricaoProduto, setDescricaoProduto] = useState('')
@@ -16,11 +17,8 @@ function ProductRegister() {
     const [preco, setPreco] = useState('')
     const [categoria, setCategoria] = useState('')
 
-    const [nomeCategoria, setNomeCategoria] = useState('')
-    const [descricaoCategoria, setDescricaoCategoria] = useState('')
-
     const [newProduct, setNewProduct] = useState({})
-    const [newCategory, setNewCategory] = useState({})
+
 
     async function handleNewProduct() {
         const produto = {
@@ -35,41 +33,16 @@ function ProductRegister() {
         setNewProduct(produto)
         http.post('produto', newProduct).then(console.log("Produto cadastrado")).catch(erro => console.log(erro))
     }
-    async function handleNewCategory() {
-        const categoria = {
-            nome: nomeCategoria,
-            descricao: descricaoCategoria
-        }
-        setNewCategory(categoria)
-        http.post('categoria', newCategory).then(console.log("categoria cadastrada")).catch(erro => console.warn(erro))
 
-    }
+    useEffect(() => {
+        http.get('categoria/todas').then((response) => { setCategorias(response.data) })
+    })
+
 
     return (
         <View style={styles.inputs}>
 
             <View style={styles.txts}>
-
-                <View style={styles.inputTxt} >
-                    <View style={styles.inputTxtRow}>
-                        <Text>Codigo do Produto</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setNomeCategoria(e)} value={nomeCategoria} />
-                    </View>
-
-                    <View style={styles.inputTxtRow}>
-                        <Text>Nome</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setDescricaoCategoria(e)} value={descricaoCategoria} />
-                    </View>
-
-
-
-                </View>
-                <View style={styles.msgCadastro}>
-                    <TouchableOpacity onPress={handleNewCategory}>
-                        <Text style={styles.msgBtn}>Cadastrar Categoria</Text>
-
-                    </TouchableOpacity>
-                </View>
 
 
                 <View style={styles.inputTxt} >
@@ -102,7 +75,7 @@ function ProductRegister() {
                         <Text>Categoria</Text>
                         <Picker
                             style={{ width: 50, height: 50 }}
-                            selectedValue={'Selecione'}
+                            selectedValue={"Nada"}
                             onValueChange={(itemValue) =>
                                 setCategoria(itemValue)
                             }>

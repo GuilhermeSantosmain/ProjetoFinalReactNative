@@ -95,7 +95,7 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ produtos, signed: !!user, user, signIn, logIn, logOut, http, categorias }} >
+        <AuthContext.Provider value={{ produtos, signed: !!user, user, signIn, logIn, logOut, http, categorias, setCategorias }} >
             {children}
         </AuthContext.Provider>
     );
