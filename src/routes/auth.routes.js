@@ -13,7 +13,7 @@ const icons = {
         name: 'home'
     },
     Perfil: {
-        name: 'user'
+        name: 'logout'
     },
     Products: {
         name: 'tags'

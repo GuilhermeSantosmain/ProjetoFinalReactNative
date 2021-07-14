@@ -4,13 +4,13 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 import { AuthContext } from '../../contexts/auth'
 
 
-function ProductRegister() {
+function CategoryRegister() {
     const navigation = useNavigation();
-    const { http } = useContext(AuthContext)
+    const { } = useContext(AuthContext)
 
-    const [produtc, setNewProduct] = useState('')
+    const [produtc, setNewCategory] = useState('')
 
-    async function handleNewProduct() {
+    async function handleNewCategory() {
 
     }
 
@@ -19,10 +19,10 @@ function ProductRegister() {
 
             <View style={styles.txts}>
                 <View style={styles.inputTxt} >
-                    <TextInput style={styles.input} onChange={(e) => setNewProduct(e.target.value)} />
+                    <TextInput style={styles.input} onChange={(e) => setNewCategory(e.target.value)} />
                 </View>
                 <View style={styles.msgCadastro}>
-                    <TouchableOpacity onPress={handleNewProduct}>
+                    <TouchableOpacity onPress={handleNewCategory}>
                         <Text style={styles.msgBtn}>Cadastrar</Text>
 
                     </TouchableOpacity>
@@ -33,8 +33,7 @@ function ProductRegister() {
     );
 }
 
-
-export default ProductRegister;
+export default CategoryRegister;
 
 
 const styles = StyleSheet.create({
