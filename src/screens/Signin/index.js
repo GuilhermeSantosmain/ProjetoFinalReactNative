@@ -1,8 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { AuthContext } from '../../contexts/auth';
 
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 
 function Signin() {
@@ -22,18 +25,18 @@ function Signin() {
 
             <View style={styles.txts}>
                 <View style={styles.inputTxt} >
-                    <TextInput style={styles.input} onChange={(e) => setNome(e.target.value)} />
+                    <TextInput placeholder="Digite seu nome" style={styles.input} onChange={(e) => setNome(e.target.value)} />
                 </View>
                 <View style={styles.inputTxt} >
-                    <TextInput style={styles.input} onChange={(e) => setEmail(e.target.value)} />
+                    <TextInput placeholder="Seu E-mail" style={styles.input} onChange={(e) => setEmail(e.target.value)} />
                 </View>
                 <View style={styles.inputTxt}>
-                    <TextInput style={styles.input} onChange={(e) => setPassword(e.target.value)} />
+                    <TextInput placeholder="Sua senha" style={styles.input} onChange={(e) => setPassword(e.target.value)} />
                 </View>
                 <View style={styles.msgCadastro}>
 
 
-                    <TouchableOpacity onPress={handleSignIn}>
+                    <TouchableOpacity onPress={handleSignIn} style={styles.btn}>
                         <Text style={styles.msgBtn}>Cadastre-se</Text>
 
                     </TouchableOpacity>
@@ -55,24 +58,24 @@ const styles = StyleSheet.create({
 
     inputTxt: {
         borderColor: '#000',
-        borderWidth: 2,
+        borderWidth: 0.5,
         borderRadius: 10,
-        width: 250,
-        padding: 10,
-        marginBottom: 20
+        width: windowWidth / 1.5,
+        padding: 5,
+        marginBottom: windowHeight / 30,
     },
 
     input: {
-        borderColor: '#000',
-        borderBottomWidth: 2,
         width: '100%',
-        height: 40,
+        height: windowHeight / 15,
         padding: 10
     },
 
     msgCadastro: {
-        marginTop: 20,
+        marginTop: windowHeight / 60,
         flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
 
     msg: {
@@ -80,8 +83,20 @@ const styles = StyleSheet.create({
     },
 
     msgBtn: {
-        fontSize: 16,
-        color: '#29d97b'
+        fontSize: 20,
+        fontWeight: 500,
+        color: '#fff',
+        padding: 10,
+    },
+
+    btn:{
+        borderColor: '#000',
+        borderWidth: 0.5,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: windowWidth / 1.8,
+        backgroundColor: '#000',
     }
 
 });

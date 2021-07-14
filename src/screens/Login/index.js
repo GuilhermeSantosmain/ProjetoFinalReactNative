@@ -1,9 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { AuthContext } from '../../contexts/auth'
 import firebase from 'firebase';
 import 'firebase/database'
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 function Login() {
     const navigation = useNavigation();
@@ -20,18 +23,24 @@ function Login() {
         <View style={styles.inputs}>
 
             <View style={styles.txts}>
-                <View style={styles.inputTxt} >
-                    <TextInput style={styles.input} onChange={(e) => setEmail(e.target.value)} />
+                <View style={styles.cxtTxt}>
+                    <View style={styles.inputTxt} >
+                        <TextInput placeholder="E-mail" style={styles.input} onChange={(e) => setEmail(e.target.value)} />
+                    </View>
+                    <View style={styles.inputTxt}>
+                        <TextInput placeholder="Senha" style={styles.input} onChange={(e) => setPassword(e.target.value)} />
+                    </View>
                 </View>
-                <View style={styles.inputTxt}>
-                    <TextInput style={styles.input} onChange={(e) => setPassword(e.target.value)} />
+
+                <View style={styles.btnLogin}>
+                <TouchableOpacity style={styles.btn} onPress={handleLogin}>
+                        <Text style={styles.txt}>Login</Text>
+                    </TouchableOpacity>
                 </View>
+
                 <View style={styles.msgCadastro}>
                     <Text style={styles.msg}>Ainda não tem cadastro? </Text>
-                    <TouchableOpacity onPress={handleLogin}>
-                        <Text style={styles.msgBtn}>Login</Text>
 
-                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
                         <Text style={styles.msgBtn}>Cadastre-se</Text>
 
@@ -53,19 +62,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
 
+    cxtTxt:{
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
     inputTxt: {
         borderColor: '#000',
-        borderWidth: 1,
+        borderWidth: 0.5,
         borderRadius: 10,
-        width: 250,
-        padding: 10,
-        marginBottom: 20,
-
+        width: windowWidth / 1.5,
+        padding: 5,
+        marginBottom: windowHeight / 30,
     },
 
     input: {
         width: '100%',
-        height: 35,
+        height: windowHeight / 15,
         padding: 3,
         textDecorationLine:'none'
     },
@@ -82,7 +95,30 @@ const styles = StyleSheet.create({
     msgBtn: {
         fontSize: 16,
         color: '#29d97b'
-    }
+    },
 
+    btn:{
+        borderColor: '#000',
+        borderWidth: 0.5,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: windowWidth / 1.8,
+        backgroundColor: '#000',
+    },
+
+    txt:{
+        fontSize: 20,
+        fontWeight: 500,
+        color: '#fff',
+        padding: 10,
+    },
+
+    btnLogin:{
+        marginTop: windowHeight / 60,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 });
 
