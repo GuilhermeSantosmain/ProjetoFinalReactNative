@@ -1,23 +1,34 @@
-import React, { useContext } from 'react';
-import { View, Text, FlatList } from 'react-native';
-import ProductsCard from '../../components/Products';
-import { AuthContext } from '../../contexts/auth';
+import React, {useContext} from 'react';
+import { View, Text } from 'react-native'
+import { AuthContext } from '../../contexts/auth'
 
-
-function Products() {
-    const { produtos } = useContext(AuthContext)
-
-    console.log(produtos)
+const Products = (props) => {
+    
+    const {produtos} = useContext(AuthContext);
+    
+if (produtos.lenght === 0){
 
     return (
         <View>
-            {/* <FlatList
-                data={produtos}
-                renderItem={({ item }) => <ProductsCard item={item} />}
-                keyExtractor={item => item.key}
-            /> */}
+            <Text>
+                Nao ha nada aqui
+            </Text>
         </View>
     )
+    }else {
+
+        return (
+            <View>
+                <Text>
+
+                {produtos.map((item) =>
+                            {item.nome}
+                )}
+                </Text>
+            </View>
+        )
+    }
+    
 }
 
-export default Products;
+export default Products
