@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/auth'
 
 function CategoryRegister() {
     const navigation = useNavigation();
+    const { } = useContext(AuthContext)
 
     const [produtc, setNewCategory] = useState('')
 

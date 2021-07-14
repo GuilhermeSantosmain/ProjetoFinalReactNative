@@ -29,6 +29,8 @@ const AuthProvider = ({ children }) => {
         baseURL: 'http://localhost:8080/'
     })
 
+
+
     useEffect(() => {
         async function loadStorage() {
             const storageUser = await AsyncStorage.getItem('Auth_user')
@@ -90,7 +92,7 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ produtos, signed: !!user, user, signIn, logIn, logOut, http }} >
+        <AuthContext.Provider value={{ produtos, signed: !!user, user, signIn, logIn, logOut }} >
             {children}
         </AuthContext.Provider>
     );
