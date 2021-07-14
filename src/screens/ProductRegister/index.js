@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/auth'
 
 function ProductRegister() {
     const navigation = useNavigation();
+    const { http } = useContext(AuthContext)
 
     const [produtc, setNewProduct] = useState('')
 
