@@ -14,7 +14,7 @@ function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    async function handleLogin() {
+    function handleLogin() {
         logIn(email, password)
         navigation.navigate('Products')
     }
@@ -25,15 +25,15 @@ function Login() {
             <View style={styles.txts}>
                 <View style={styles.cxtTxt}>
                     <View style={styles.inputTxt} >
-                        <TextInput placeholder="E-mail" style={styles.input} onChange={(e) => setEmail(e.target.value)} />
+                        <TextInput value={email} placeholder="E-mail" style={styles.input} onChangeText={(e) => setEmail(e)} />
                     </View>
                     <View style={styles.inputTxt}>
-                        <TextInput placeholder="Senha" style={styles.input} onChange={(e) => setPassword(e.target.value)} />
+                        <TextInput value={password} placeholder="Senha" style={styles.input} onChangeText={(e) => setPassword(e)} />
                     </View>
                 </View>
 
                 <View style={styles.btnLogin}>
-                <TouchableOpacity style={styles.btn} onPress={handleLogin}>
+                    <TouchableOpacity style={styles.btn} onPress={handleLogin}>
                         <Text style={styles.txt}>Login</Text>
                     </TouchableOpacity>
                 </View>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
 
-    cxtTxt:{
+    cxtTxt: {
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: windowHeight / 15,
         padding: 3,
-        textDecorationLine:'none'
+        textDecorationLine: 'none'
     },
 
     msgCadastro: {
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         color: '#29d97b'
     },
 
-    btn:{
+    btn: {
         borderColor: '#000',
         borderWidth: 0.5,
         borderRadius: 10,
@@ -107,14 +107,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#000',
     },
 
-    txt:{
+    txt: {
         fontSize: 20,
-        fontWeight: 500,
+        fontWeight: '500',
         color: '#fff',
         padding: 10,
     },
 
-    btnLogin:{
+    btnLogin: {
         marginTop: windowHeight / 60,
         flexDirection: 'row',
         alignItems: 'center',
