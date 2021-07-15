@@ -47,7 +47,7 @@ const Home = () => {
                             Ver todos os pedidos
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('ProductRegister')}>
+                    <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('ProductEdit')}>
                         <Text>
                             Editar produtos
                         </Text>
