@@ -54,6 +54,7 @@ const Home = () => {
                     </TouchableOpacity>
 
 
+
                 </View>
                 <View style={{ padding: 10, margin: 5 }}>
                     <TouchableOpacity style={[styles.btnUser, { backgroundColor: 'red' }]} onPress={() => logOut()}>

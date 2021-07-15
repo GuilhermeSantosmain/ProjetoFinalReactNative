@@ -2,14 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import {
   View,
   FlatList,
-  Text,
   StyleSheet,
-  TouchableOpacity,
-  Image,
-  Dimensions,
-  ScrollView
+  Dimensions
 } from "react-native";
 import { AuthContext } from "../../contexts/auth";
+import ProductCard from '../../components/Products/index';
+import { useNavigation } from "@react-navigation/native";
 
 const itens = [
   {
@@ -50,72 +48,32 @@ const itens = [
   },
 ];
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-
-const renderItem = ({ item }) => (
-  <TouchableOpacity>
-    <View style={styles.card}>
-      <Image source={{ uri: item.url }} style={styles.img} />
-      <Text style={styles.title}>{item.nome}</Text>
-      <Text style={styles.title}>{item.preco}</Text>
-    </View>
-  </TouchableOpacity>
-);
-
 const Products = () => {
   const [produtos, setProdutos] = useState([]);
   const { http } = useContext(AuthContext)
-
+  const navigation = useNavigation()
   useEffect(() => {
     http.get('produto/todos').then((response) => setProdutos(response.data)).catch(error => console.warn(error))
 
   }, [])
   return (
-
     <View style={styles.produtcs}>
 
       <FlatList
-        scrollEnabled={true}
         numColumns={2}
         contentContainerStyle={styles.flatList}
         data={produtos}
-        renderItem={renderItem}
+        renderItem={({ item }) => <ProductCard item={item} navigation={navigation} />}
         keyExtractor={(item) => item.id}
         pagingEnabled
       />
-
     </View>
-
   );
 };
 
 export default Products;
 
 const styles = StyleSheet.create({
-  img: {
-    width: 130,
-    height: 130,
-  },
-
-  card: {
-    height: windowHeight / 3,
-    width: windowWidth / 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.18,
-    shadowRadius: 1.00,
-
-    elevation: 1,
-  },
-  title: {
-    textAlign: 'center'
-  },
   produtcs: {
     justifyContent: 'center',
     alignItems: 'center'
