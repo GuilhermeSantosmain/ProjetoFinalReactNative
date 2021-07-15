@@ -65,7 +65,6 @@ const renderItem = ({ item }) => (
 
 const Products = () => {
   const { produtos } = useContext(AuthContext);
-  console.warn(produtos)
 
   return (
 

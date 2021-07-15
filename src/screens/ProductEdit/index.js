@@ -43,14 +43,15 @@ function ProductEdit() {
     }
 
     async function handleProductEdit(id) {
-        await http.get('produto/' + {id}).then((response) => { 
+        await http.get('produto/' + { id }).then((response) => {
             setCodigo(response.data.codigo)
             setDescricaoProduto(response.data.descricao)
             setQuantidadeEstoque(response.data.quantidadeEstoque)
             setNomeProduto(response.data.nome)
             setPreco(response.data.preco)
-            setCategoria(response.data.categoria)})
-        
+            setCategoria(response.data.categoria)
+        })
+
         console.log(produto)
     }
     useEffect(() => {
@@ -61,8 +62,6 @@ function ProductEdit() {
     return (
         <View style={styles.body}>
             <View style={styles.form}>
-
-
                 <View style={styles.inputs}>
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Produto</Text>
@@ -74,7 +73,6 @@ function ProductEdit() {
 
                                 return <Picker.Item key={item.id} label={item.nome} value={item.id} />
                             })}
-
 
                         </Picker>
                     </View>
@@ -101,7 +99,7 @@ function ProductEdit() {
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Quantidade de estoque</Text>
-                        <TextInput  style={styles.input} onChangeText={(e) => setNovaQuantidadeEstoque(e)} defaultValue={quantidadeEstoque} />
+                        <TextInput style={styles.input} onChangeText={(e) => setNovaQuantidadeEstoque(e)} defaultValue={quantidadeEstoque} />
                     </View>
 
 
