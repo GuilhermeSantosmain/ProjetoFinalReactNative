@@ -9,7 +9,9 @@ import styles from './styles'
 
 function ProductEdit() {
     const navigation = useNavigation();
-    const { http, produtos } = useContext(AuthContext)
+    const { http } = useContext(AuthContext)
+
+    const [selectedValue, setSelectedValue] = useState("java");
 
     const [codigo, setCodigo] = useState('')
     const [descricaoProduto, setDescricaoProduto] = useState('')
@@ -26,6 +28,7 @@ function ProductEdit() {
     const [novaCategoria, setNovaCategoria] = useState('')
 
     const [produto, setProduto] = useState({})
+    const [produtos, setProdutos] = useState([])
 
 
     async function handleProduct() {
@@ -38,24 +41,21 @@ function ProductEdit() {
             categoria: categoria
         }
         console.log(produto)
-        setNewProduct(produto)
         http.put('produto', produto).then(console.log("Produto cadastrado")).catch(erro => console.log(erro))
     }
 
-    async function handleProductEdit(id) {
-        await http.get('produto/' + { id }).then((response) => {
+    async function handleProductEdit(produtoEdit) {
+        http.get('produto/' + { produtoEdit }).then((response) => {
             setCodigo(response.data.codigo)
             setDescricaoProduto(response.data.descricao)
             setQuantidadeEstoque(response.data.quantidadeEstoque)
             setNomeProduto(response.data.nome)
             setPreco(response.data.preco)
-            setCategoria(response.data.categoria)
         })
 
-        console.log(produto)
     }
     useEffect(() => {
-        http.get('produto/todos').then((response) => { setCategorias(response.data) })
+        http.get('produto/todos').then((response) => { setProdutos(response.data) })
     })
 
 
@@ -67,10 +67,13 @@ function ProductEdit() {
                         <Text style={styles.inputText}>Produto</Text>
                         <Picker
                             style={styles.picker}
-                            selectedValue={""}
-                            onValueChange={(itemValue) => handleProductEdit(itemValue)}>
+                            selectedValue={selectedValue}
+                            onValueChange={(itemValue) => {
+                            setSelectedValue(itemValue) 
+                            handleProductEdit(itemValue)
+                            }}>
                             {produtos.map((item) => {
-
+                               
                                 return <Picker.Item key={item.id} label={item.nome} value={item.id} />
                             })}
 

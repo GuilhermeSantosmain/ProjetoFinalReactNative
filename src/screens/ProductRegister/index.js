@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Switch } from 'react-native';
+import { View, Text, ScrollView, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import { AuthContext } from '../../contexts/auth'
 import { Picker } from '@react-native-picker/picker';
 import { useEffect } from 'react/cjs/react.development';
@@ -47,27 +47,37 @@ function ProductRegister() {
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Codigo do Produto</Text>
-                        <TextInput placeholder='Ex.: B32A43' style={styles.input} onChangeText={(e) => setCodigo(e)} value={codigo} />
+                        <ScrollView contentContainerStyle={{flexGrow: 1}}   keyboardShouldPersistTaps='handled' >
+                            <TextInput placeholder='Ex.: B32A43' style={styles.input} blurOnSubmit onBlur={Keyboard.dismiss} onChangeText={(e) => setCodigo(e)} value={codigo} />
+                            </ScrollView>
                     </View>
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Nome</Text>
-                        <TextInput placeholder='Ex.: Jordan One Take II' style={styles.input} onChangeText={(e) => setNomeProduto(e)} value={nomeProduto} />
+                        <ScrollView contentContainerStyle={{flexGrow: 1}}   keyboardShouldPersistTaps='handled' >
+                            <TextInput placeholder='Ex.: Jordan One Take II' style={styles.input} blurOnSubmit onBlur={Keyboard.dismiss} onChangeText={(e) => setNomeProduto(e)} value={nomeProduto} />
+                            </ScrollView>
                     </View>
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Descrição</Text>
-                        <TextInput placeholder='Ex.: Masculino, Rosa etc' style={styles.input} onChangeText={(e) => setDescricaoProduto(e)} value={descricaoProduto} />
+                        <ScrollView contentContainerStyle={{flexGrow: 1}}   keyboardShouldPersistTaps='handled' >
+                            <TextInput placeholder='Ex.: Masculino, Rosa etc' style={styles.input} blurOnSubmit onBlur={Keyboard.dismiss} onChangeText={(e) => setDescricaoProduto(e)} value={descricaoProduto} />
+                            </ScrollView>
                     </View>
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Preço</Text>
-                        <TextInput placeholder='Ex.: 699.90' style={styles.input} onChangeText={(e) => setPreco(e)} value={preco} />
+                        <ScrollView contentContainerStyle={{flexGrow: 1}}   keyboardShouldPersistTaps='handled' >
+                            <TextInput placeholder='Ex.: 699.90' style={styles.input} blurOnSubmit onBlur={Keyboard.dismiss} onChangeText={(e) => setPreco(e)} value={preco} />
+                            </ScrollView>
                     </View>
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Quantidade de estoque</Text>
-                        <TextInput placeholder='Ex.: 50' style={styles.input} onChangeText={(e) => setQuantidadeEstoque(e)} value={quantidadeEstoque} />
+                        <ScrollView contentContainerStyle={{flexGrow: 1}}   keyboardShouldPersistTaps='handled' >
+                            <TextInput placeholder='Ex.: 50' style={styles.input} blurOnSubmit onBlur={Keyboard.dismiss} onChangeText={(e) => setQuantidadeEstoque(e)} value={quantidadeEstoque} />
+                            </ScrollView>
                     </View>
 
                     <View style={styles.inputView}>
