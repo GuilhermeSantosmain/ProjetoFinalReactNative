@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  SafeAreaView,
+  Dimensions
 } from "react-native";
 import { AuthContext } from "../../contexts/auth";
 
@@ -49,6 +49,9 @@ const itens = [
   },
 ];
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 const renderItem = ({ item }) => (
   <TouchableOpacity>
     <View style={styles.card}>
@@ -63,14 +66,16 @@ const Products = () => {
   const { produtos } = useContext(AuthContext);
 
   return (
-    <SafeAreaView>
+    <View style={styles.produtcs}>
+
       <FlatList
+        contentContainerStyle={styles.flatList}
         data={itens}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         pagingEnabled
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -78,20 +83,35 @@ export default Products;
 
 const styles = StyleSheet.create({
   img: {
-    width: "100%",
-    height: 70,
+    width: 130,
+    height: 130,
   },
 
   card: {
-    width: 150,
-    height: 200,
-    borderWidth: 1,
-    margin: 10,
-    alignItems: "center",
-    justifyContent: "center",
+    height: windowHeight / 3.5,
+    width: windowWidth / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.00,
+
+    elevation: 1,
   },
-  
   title: {
-    marginTop: 10,
+    textAlign: 'center'
   },
+  flatList: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  produtcs: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
