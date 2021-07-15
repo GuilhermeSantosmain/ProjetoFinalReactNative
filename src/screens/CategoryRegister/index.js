@@ -26,24 +26,24 @@ function CategoryRegister() {
             <View style={styles.txts}>
                 <View style={styles.inputTxt} >
                     <View style={styles.inputTxtRow}>
-                        <Text>Nome da categoria</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setNomeCategoria(e)} value={nomeCategoria} />
+                        <Text style={styles.tituloBtn}>Nome da categoria</Text>
+                        <TextInput style={styles.input} placeholder="Nome" onChangeText={(e) => setNomeCategoria(e)} value={nomeCategoria} />
                     </View>
 
                     <View style={styles.inputTxtRow}>
-                        <Text>Descricao</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setDescricaoCategoria(e)} value={descricaoCategoria} />
+                        <Text style={styles.tituloBtn}>Descricao</Text>
+                        <TextInput style={styles.input} placeholder="Descrição" onChangeText={(e) => setDescricaoCategoria(e)} value={descricaoCategoria} />
                     </View>
 
-
-
-                </View>
-                <View style={styles.msgCadastro}>
+                    <View style={styles.msgCadastro}>
                     <TouchableOpacity onPress={handleNewCategory}>
                         <Text style={styles.msgBtn}>Cadastrar Categoria</Text>
 
                     </TouchableOpacity>
                 </View>
+
+                </View>
+ 
             </View>
 
         </View>
@@ -69,26 +69,37 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
 
+    inputTxtRow:{
+        marginTop: 12,
+    },
+
     input: {
-        borderColor: '#000',
-        borderBottomWidth: 2,
+        borderColor: '#666',
+        borderWidth: 0.5,
+        borderRadius: 5,
         width: '100%',
         height: 40,
-        padding: 10
+        padding: 10,
     },
 
     msgCadastro: {
         marginTop: 20,
-        flexDirection: 'row',
-    },
-
-    msg: {
-        fontSize: 16
+        backgroundColor: '#000',
+        height: 35,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     msgBtn: {
         fontSize: 16,
-        color: '#29d97b'
-    }
+        fontWeight: '500',
+        color: '#fff',
+    },
+
+    tituloBtn:{
+        fontSize: 16,
+        fontWeight: 'bold'
+    },
 
 });
