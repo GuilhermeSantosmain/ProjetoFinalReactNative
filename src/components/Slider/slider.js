@@ -53,12 +53,12 @@ export default class Slider extends React.Component{
 const style= StyleSheet.create({
     container:{
         width: '100%',
-        height: 300
+        height: 350
     },
 
     image:{
-        width,
-        height, 
+        width: 355,
+        height: 350, 
         resizeMode: 'cover'
     },
     pagination:{

@@ -5,10 +5,10 @@ import Slider from  '../Slider/slider'
 
 
 const images =[
-    'https://images.lojanike.com.br/500x500/produto/tenis-nike-sb-nyjah-free-2-unissex-BV2078-103-1.jpg',
-    'https://images.lojanike.com.br/500x500/produto/tenis-nike-air-max-excee-masculino-CD4165-100-1.png',
+    'https://i.pinimg.com/originals/65/58/2b/65582b768473cefd516a9542349bc084.png',
+    'https://www.playmakerbrasil.com.br/sites/default/files/wp-content/uploads/2019/08/Nike-Air-Jordan-1-OG-Ad.jpeg',
     'https://images.lojanike.com.br/500x500/produto/tenis-nike-air-max-97-edicao-especial-masculino-DC3986-100-1.jpg',
-    'https://images.lojanike.com.br/500x500/produto/tenis-air-force-1-07-s50-DA8478-101-1-11621541005.jpg',
+    'https://s3.amazonaws.com/nikeinc/assets/50814/15-600_Nike_Kyrie_2_Hero-01_native_1600.jpg?1449529832',
 ]
     
 
@@ -25,7 +25,6 @@ export default class Carrousel extends React.Component{
 
 const style= StyleSheet.create({
     container:{
-        backgroundColor: '#000',
-        height: 300
+        height: 350
     },
 })
