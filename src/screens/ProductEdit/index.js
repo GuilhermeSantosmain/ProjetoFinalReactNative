@@ -9,7 +9,10 @@ import styles from './styles'
 
 function ProductEdit() {
     const navigation = useNavigation();
-    const { http, produtos } = useContext(AuthContext)
+    const { http } = useContext(AuthContext)
+
+    const [selectedValue, setSelectedValue] = useState("Selecione um produto");
+    const [selectedValueCategoria, setSelectedValueCategoria] = useState("");
 
     const [codigo, setCodigo] = useState('')
     const [descricaoProduto, setDescricaoProduto] = useState('')
@@ -18,17 +21,12 @@ function ProductEdit() {
     const [preco, setPreco] = useState('')
     const [categoria, setCategoria] = useState('')
 
-    const [novoCodigo, setNovoCodigo] = useState('')
-    const [novaDescricaoProduto, setNovaDescricaoProduto] = useState('')
-    const [novaQuantidadeEstoque, setNovaQuantidadeEstoque] = useState('')
-    const [novoNomeProduto, setNovoNomeProduto] = useState('')
-    const [novoPreco, setNovoPreco] = useState('')
-    const [novaCategoria, setNovaCategoria] = useState('')
-
-    const [produto, setProduto] = useState({})
+    
+    const [produtos, setProdutos] = useState([])
+    const [categorias, setCategorias] = useState([])
 
 
-    async function handleProduct() {
+    function handleProduct() {
         const produto = {
             codigo: codigo,
             nome: nomeProduto,
@@ -37,26 +35,26 @@ function ProductEdit() {
             quantidadeEstoque: quantidadeEstoque,
             categoria: categoria
         }
-        console.log(produto)
-        setNewProduct(produto)
-        http.put('produto', produto).then(console.log("Produto cadastrado")).catch(erro => console.log(erro))
+        console.log(selectedValue.id)
+        http.put(`produto/${selectedValue.id}` , produto).then(console.log("Produto cadastrado")).catch(erro => console.log(erro))
     }
 
-    async function handleProductEdit(id) {
-        await http.get('produto/' + { id }).then((response) => {
-            setCodigo(response.data.codigo)
-            setDescricaoProduto(response.data.descricao)
-            setQuantidadeEstoque(response.data.quantidadeEstoque)
-            setNomeProduto(response.data.nome)
-            setPreco(response.data.preco)
-            setCategoria(response.data.categoria)
-        })
+     function handleProductEdit(produtoEdit) {
+        console.log("foi");
+        setSelectedValue(produtoEdit)
+            setCategoria(produtoEdit.categoria)
+            setCodigo(produtoEdit.codigo)
+            setDescricaoProduto(produtoEdit.descricao)
+            setQuantidadeEstoque((produtoEdit.quantidadeEstoque).toString())
+            setNomeProduto(produtoEdit.nome)
+            setPreco((produtoEdit.preco).toString())
+        
 
-        console.log(produto)
     }
     useEffect(() => {
-        http.get('produto/todos').then((response) => { setCategorias(response.data) })
-    })
+        http.get('produto/todos').then((response) => { setProdutos(response.data) })
+        http.get('categoria/todas').then((response) => {setCategorias(response.data)})
+    },[])
 
 
     return (
@@ -67,11 +65,13 @@ function ProductEdit() {
                         <Text style={styles.inputText}>Produto</Text>
                         <Picker
                             style={styles.picker}
-                            selectedValue={""}
-                            onValueChange={(itemValue) => handleProductEdit(itemValue)}>
+                            selectedValue={selectedValue}
+                            onValueChange={(itemValue) => {                             
+                            handleProductEdit(itemValue)
+                            }}>
                             {produtos.map((item) => {
-
-                                return <Picker.Item key={item.id} label={item.nome} value={item.id} />
+                               
+                                return <Picker.Item key={item.id} label={item.nome} value={item} />
                             })}
 
                         </Picker>
@@ -79,29 +79,44 @@ function ProductEdit() {
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Codigo do Produto</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setNovoCodigo(e)} defaultValue={codigo} />
+                        <TextInput style={styles.input} onChangeText={(e) => setCodigo(e)} defaultValue={codigo} />
                     </View>
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Nome</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setNovoNomeProduto(e)} defaultValue={nomeProduto} />
+                        <TextInput style={styles.input} onChangeText={(e) => setNomeProduto(e)} defaultValue={nomeProduto} />
                     </View>
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Descrição</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setNovaDescricaoProduto(e)} defaultValue={descricaoProduto} />
+                        <TextInput style={styles.input} onChangeText={(e) => setDescricaoProduto(e)} defaultValue={descricaoProduto} />
                     </View>
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Preço</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setNovoPreco(e)} defaultValue={preco} />
+                        <TextInput style={styles.input} onChangeText={(e) => setPreco(e)} defaultValue={preco} />
                     </View>
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Quantidade de estoque</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setNovaQuantidadeEstoque(e)} defaultValue={quantidadeEstoque} />
+                        <TextInput style={styles.input} onChangeText={(e) => setQuantidadeEstoque(e)} defaultValue={quantidadeEstoque} />
                     </View>
 
+                    <View style={styles.inputView}>
+                        <Text style={styles.inputText}>Categoria</Text>
+                        <Picker
+                            style={styles.picker}
+                            selectedValue={selectedValueCategoria}
+                            onValueChange={(itemValue) => {
+                            setSelectedValueCategoria(itemValue) 
+                            }}>
+                            {categorias.map((item) => {
+                               
+                                return <Picker.Item key={item.id} label={item.nome} value={item} />
+                            })}
+
+                        </Picker>
+                    </View>
 
                 </View>
 
