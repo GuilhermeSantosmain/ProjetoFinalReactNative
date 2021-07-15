@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, ScrollView, TextInput, TouchableOpacity, Keyboard } from 'react-native';
+import { View, Text, ScrollView, TextInput, TouchableOpacity, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { AuthContext } from '../../contexts/auth'
 import { Picker } from '@react-native-picker/picker';
 import { useEffect } from 'react/cjs/react.development';
@@ -16,7 +16,7 @@ function ProductRegister() {
     const [quantidadeEstoque, setQuantidadeEstoque] = useState('')
     const [nomeProduto, setNomeProduto] = useState('')
     const [preco, setPreco] = useState('')
-    const [categoria, setCategoria] = useState('')
+    const [categoria, setCategoria] = useState({})
     const [categorias, setCategorias] = useState([])
 
 
@@ -39,76 +39,79 @@ function ProductRegister() {
 
 
     return (
-        <View style={styles.body}>
-            <View style={styles.form}>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View style={styles.body}>
+                <View style={styles.form}>
 
 
-                <View style={styles.inputs}>
+                    <View style={styles.inputs}>
 
-                    <View style={styles.inputView}>
-                        <Text style={styles.inputText}>Codigo do Produto</Text>
-                        <ScrollView contentContainerStyle={{flexGrow: 1}}   keyboardShouldPersistTaps='handled' >
+                        <View style={styles.inputView}>
+                            <Text style={styles.inputText}>Codigo do Produto</Text>
+
                             <TextInput placeholder='Ex.: B32A43' style={styles.input} blurOnSubmit onBlur={Keyboard.dismiss} onChangeText={(e) => setCodigo(e)} value={codigo} />
-                            </ScrollView>
-                    </View>
 
-                    <View style={styles.inputView}>
-                        <Text style={styles.inputText}>Nome</Text>
-                        <ScrollView contentContainerStyle={{flexGrow: 1}}   keyboardShouldPersistTaps='handled' >
+                        </View>
+
+                        <View style={styles.inputView}>
+                            <Text style={styles.inputText}>Nome</Text>
+
                             <TextInput placeholder='Ex.: Jordan One Take II' style={styles.input} blurOnSubmit onBlur={Keyboard.dismiss} onChangeText={(e) => setNomeProduto(e)} value={nomeProduto} />
-                            </ScrollView>
-                    </View>
 
-                    <View style={styles.inputView}>
-                        <Text style={styles.inputText}>Descrição</Text>
-                        <ScrollView contentContainerStyle={{flexGrow: 1}}   keyboardShouldPersistTaps='handled' >
+                        </View>
+
+                        <View style={styles.inputView}>
+                            <Text style={styles.inputText}>Descrição</Text>
+
                             <TextInput placeholder='Ex.: Masculino, Rosa etc' style={styles.input} blurOnSubmit onBlur={Keyboard.dismiss} onChangeText={(e) => setDescricaoProduto(e)} value={descricaoProduto} />
-                            </ScrollView>
-                    </View>
 
-                    <View style={styles.inputView}>
-                        <Text style={styles.inputText}>Preço</Text>
-                        <ScrollView contentContainerStyle={{flexGrow: 1}}   keyboardShouldPersistTaps='handled' >
+                        </View>
+
+                        <View style={styles.inputView}>
+                            <Text style={styles.inputText}>Preço</Text>
+
                             <TextInput placeholder='Ex.: 699.90' style={styles.input} blurOnSubmit onBlur={Keyboard.dismiss} onChangeText={(e) => setPreco(e)} value={preco} />
-                            </ScrollView>
-                    </View>
 
-                    <View style={styles.inputView}>
-                        <Text style={styles.inputText}>Quantidade de estoque</Text>
-                        <ScrollView contentContainerStyle={{flexGrow: 1}}   keyboardShouldPersistTaps='handled' >
+                        </View>
+
+                        <View style={styles.inputView}>
+                            <Text style={styles.inputText}>Quantidade de estoque</Text>
+
                             <TextInput placeholder='Ex.: 50' style={styles.input} blurOnSubmit onBlur={Keyboard.dismiss} onChangeText={(e) => setQuantidadeEstoque(e)} value={quantidadeEstoque} />
-                            </ScrollView>
+
+                        </View>
+
+                        <View style={styles.inputView}>
+                            <Text style={styles.inputText}>Categoria</Text>
+                            <Picker
+                                style={styles.picker}
+                                selectedValue={categoria}
+                                onValueChange={(itemValue) =>
+                                    setCategoria(itemValue)
+                                }>
+                                {categorias.map((item) => {
+
+                                    return <Picker.Item key={item.id} label={item.nome} value={item.id} />
+                                })}
+
+
+                            </Picker>
+                        </View>
                     </View>
 
-                    <View style={styles.inputView}>
-                        <Text style={styles.inputText}>Categoria</Text>
-                        <Picker
-                            style={styles.picker}
-                            selectedValue={categoria}
-                            onValueChange={(itemValue) =>
-                                setCategoria(itemValue)
-                            }>
-                            {categorias.map((item) => {
-
-                                return <Picker.Item key={item.id} label={item.nome} value={item.id} />
-                            })}
 
 
-                        </Picker>
+                    <View style={[styles.msgCadastro, styles.inputView]}>
+                        <TouchableOpacity style={styles.btn} onPress={() => handleNewProduct()}>
+                            <Text style={styles.tituloBtn}>Cadastrar Produto</Text>
+
+                        </TouchableOpacity>
                     </View>
-                </View>
 
+                </View >
+            </View>
+        </TouchableWithoutFeedback>
 
-
-                <View style={[styles.msgCadastro, styles.inputView]}>
-                    <TouchableOpacity style={styles.btn} onPress={() => handleNewProduct()}>
-                        <Text style={styles.tituloBtn}>Cadastrar Produto</Text>
-
-                    </TouchableOpacity>
-                </View>
-
-            </View >
-        </View>
 
     );
 }
