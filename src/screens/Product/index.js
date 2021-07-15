@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView } from 'react-native'
 import { useState } from 'react/cjs/react.development'
 import { AuthContext } from '../../contexts/auth'
 
@@ -17,7 +17,8 @@ const Product = ({ route, navigation }) => {
         let produtoCart = {
             nome: produto.nome,
             preco: produto.preco,
-            quantidade: quantidade
+            quantidade: quantidade,
+            url: produto.url
         }
         setCart(oldCart => [...oldCart, produtoCart])
         console.warn(cart)
@@ -25,18 +26,28 @@ const Product = ({ route, navigation }) => {
     }
 
     return (
-        <View>
-            <Text> {produto.nome}</Text>
-            <Text> {produto.preco}</Text>
-            <Text> {produto.descricao}</Text>
-            <TextInput keyboardType='numeric' maxLength={produto.quantidade} />
-            <TouchableOpacity style={{ backgroundColor: 'red' }} onPress={() => addToCart()}>
-                <Text>
-                    Add to cart
-                </Text>
-            </TouchableOpacity>
-        </View>
+        
+            <View>
+                <Image  source={produto.url} style={styles.img} />
+                <Text> {produto.nome}</Text>
+                <Text> {produto.preco}</Text>
+                <Text> {produto.descricao}</Text>
+                <TextInput keyboardType='numeric' maxLength={produto.quantidade} />
+                <TouchableOpacity style={{ backgroundColor: 'red' }} onPress={() => addToCart()}>
+                    <Text>
+                        Add to cart
+                    </Text>
+                </TouchableOpacity>
+            </View>
+        
     )
 }
 
 export default Product
+
+const styles = StyleSheet.create({
+    img: {
+      width: 100,
+      height: 100,
+    },
+})

@@ -18,6 +18,7 @@ function ProductRegister() {
     const [preco, setPreco] = useState('')
     const [categoria, setCategoria] = useState({})
     const [categorias, setCategorias] = useState([])
+    const [url, setUrl] = useState([])
 
 
     async function handleNewProduct() {
@@ -26,10 +27,12 @@ function ProductRegister() {
             nome: nomeProduto,
             descricao: descricaoProduto,
             preco: preco,
+            url: url,
             quantidadeEstoque: Number.parseInt(quantidadeEstoque, 10),
             categoria: { id: Number.parseInt(categoria, 10) }
 
         }
+        console.log(url)
         http.post('produto', produto).then(console.log("Produto cadastrado")).catch(erro => console.log(erro))
     }
 
@@ -39,7 +42,7 @@ function ProductRegister() {
 
 
     return (
-        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+
             <View style={styles.body}>
                 <View style={styles.form}>
 
@@ -81,6 +84,14 @@ function ProductRegister() {
 
                         </View>
 
+                        
+                        <View style={styles.inputView}>
+                            <Text style={styles.inputText}>Url</Text>
+
+                            <TextInput placeholder='URL de imagem' style={styles.input} blurOnSubmit onBlur={Keyboard.dismiss} onChangeText={(e) => setUrl(e)} value={url} />
+
+                        </View>
+
                         <View style={styles.inputView}>
                             <Text style={styles.inputText}>Categoria</Text>
                             <Picker
@@ -110,7 +121,7 @@ function ProductRegister() {
 
                 </View >
             </View>
-        </TouchableWithoutFeedback>
+
 
 
     );
