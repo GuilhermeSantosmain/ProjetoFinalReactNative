@@ -8,7 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Signin from './src/screens/Signin';
 import ProductRegister from './src/screens/ProductRegister';
 import CategoryRegister from './src/screens/CategoryRegister';
-import ProductEdit from './src/screens/ProductEdit';
+import ProductEdit from './src/screens/ProductEdit'
 
 // console.disableYellowBox = true;
 const Stack = createStackNavigator();
