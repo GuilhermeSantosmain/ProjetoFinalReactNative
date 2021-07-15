@@ -37,14 +37,6 @@ export default class Slider extends React.Component{
                 }
                </ScrollView> 
 
-               <View style={style.pagination}>
-                   {
-                       this.props.images.map((i,k) => (
-                        <Text key={k} style={k==this.state.active ? style.pagingActiveText : style.pagingText}>⬤</Text>
-                       ))
-                   }
-            
-               </View>
            </View>
        ) 
     }
@@ -68,20 +60,6 @@ const style= StyleSheet.create({
         alignSelf: 'center'
     },
 
-    pagingText:{ 
-        fontSize: 22 ,
-        color: '#000',
-        marginLeft: 2,
-        marginRight: 2,
-         
-    },
-        pagingActiveText:{
-            color: '#fff', 
-            fontSize: 22 ,
-            marginLeft: 5,
-            marginRight: 5,
-           
-    },
 })
 
 

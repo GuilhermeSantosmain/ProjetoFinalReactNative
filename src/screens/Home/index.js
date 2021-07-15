@@ -1,18 +1,32 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, ScrollView, StyleSheet } from 'react-native'
 import ScrollItens from '../../components/Home/ScrollItens'
 import Carrousel from '../../components/Home/carrousel'
+import ImagemHome1 from '../../components/Home/ImagemHome1'
 
 function Home() {
 
     return (
-        <View>
-           
-            <Carrousel />
+   
+           <ScrollView
+           showsVerticalScrollIndicator={false}
+           style={styles.container}>
 
-           <ScrollItens/>
-        </View>
+                <Carrousel />
+
+                <ScrollItens/>
+
+                <ImagemHome1 />
+
+            </ScrollView>
+       
     )
 }
 
 export default Home;
+
+const styles= StyleSheet.create({
+    container:{
+        backgroundColor: '#fff',
+    },
+})
