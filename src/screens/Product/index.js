@@ -19,7 +19,8 @@ const Product = ({ route, navigation }) => {
             let produtoCart = {
                 nome: produto.nome,
                 preco: produto.preco,
-                quantidade: quantidade
+                quantidade: quantidade,
+                url: produto.url
             }
             let array = []
             setCart((oldCart) => {
@@ -44,6 +45,7 @@ const Product = ({ route, navigation }) => {
 
     return (
         <View>
+             <Image  source={produto.url} style={styles.img} />
             <Text> {produto.nome}</Text>
             <Text> {produto.preco}</Text>
             <Text> {produto.descricao}</Text>
