@@ -23,8 +23,6 @@ if (!firebase.apps.length) {
 export const AuthContext = createContext({})
 
 const AuthProvider = ({ children }) => {
-    const [produtos, setProdutos] = useState([])
-    const [categorias, setCategorias] = useState([])
     const [user, setUser] = useState(null)
     const http = axios.create({
         baseURL: 'http://192.168.0.6:8080',
@@ -37,12 +35,6 @@ const AuthProvider = ({ children }) => {
                 setUser(JSON.parse(storageUser))
             }
         }
-        async function loadDatabase() {
-            await http.get('produto/todos').then((response) => setProdutos(response.data)).catch(error => console.warn(error))
-            await http.get('categoria/todas').then((response) => { setCategorias(response.data) }).catch(error => console.warn(error))
-        }
-
-        loadDatabase()
         loadStorage()
     }, [])
 
@@ -95,7 +87,7 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ produtos, signed: !!user, user, signIn, logIn, logOut, http, categorias, setCategorias }} >
+        <AuthContext.Provider value={{ signed: !!user, user, signIn, logIn, logOut, http }} >
             {children}
         </AuthContext.Provider>
     );

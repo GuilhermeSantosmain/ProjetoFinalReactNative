@@ -64,8 +64,13 @@ const renderItem = ({ item }) => (
 );
 
 const Products = () => {
-  const { produtos } = useContext(AuthContext);
+  const [produtos, setProdutos] = useState([]);
+  const { http } = useContext(AuthContext)
 
+  useEffect(() => {
+    http.get('produto/todos').then((response) => setProdutos(response.data)).catch(error => console.warn(error))
+
+  }, [])
   return (
 
     <View style={styles.produtcs}>
