@@ -24,6 +24,7 @@ export const AuthContext = createContext({})
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
+    const [cart, setCart] = useState([])
     const http = axios.create({
         baseURL: 'http://192.168.0.6:8080',
     })
@@ -87,7 +88,7 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ signed: !!user, user, signIn, logIn, logOut, http }} >
+        <AuthContext.Provider value={{ signed: !!user, user, signIn, logIn, logOut, http, cart, setCart }} >
             {children}
         </AuthContext.Provider>
     );
