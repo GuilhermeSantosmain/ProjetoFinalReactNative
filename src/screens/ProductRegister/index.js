@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Switch } from 'rea
 import { AuthContext } from '../../contexts/auth'
 import { Picker } from '@react-native-picker/picker';
 import { useEffect } from 'react/cjs/react.development';
+import styles from './styles'
 
 
 function ProductRegister() {
@@ -40,42 +41,42 @@ function ProductRegister() {
 
 
     return (
-        <View style={styles.inputs}>
+        <View style={styles.body}>
+            <View style={styles.form}>
 
-            <View style={styles.txts}>
 
+                <View style={styles.inputs}>
 
-                <View style={styles.inputTxt} >
-                    <View style={styles.inputTxtRow}>
-                        <Text>Codigo do Produto</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setCodigo(e)} value={codigo} />
+                    <View style={styles.inputView}>
+                        <Text style={styles.inputText}>Codigo do Produto</Text>
+                        <TextInput placeholder='Ex.: B32A43' style={styles.input} onChangeText={(e) => setCodigo(e)} value={codigo} />
                     </View>
 
-                    <View style={styles.inputTxtRow}>
-                        <Text>Nome</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setNomeProduto(e)} value={nomeProduto} />
+                    <View style={styles.inputView}>
+                        <Text style={styles.inputText}>Nome</Text>
+                        <TextInput placeholder='Ex.: Jordan One Take II' style={styles.input} onChangeText={(e) => setNomeProduto(e)} value={nomeProduto} />
                     </View>
 
-                    <View style={styles.inputTxtRow}>
-                        <Text>Descrição</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setDescricaoProduto(e)} value={descricaoProduto} />
+                    <View style={styles.inputView}>
+                        <Text style={styles.inputText}>Descrição</Text>
+                        <TextInput placeholder='Ex.: Masculino, Rosa etc' style={styles.input} onChangeText={(e) => setDescricaoProduto(e)} value={descricaoProduto} />
                     </View>
 
-                    <View style={styles.inputTxtRow}>
-                        <Text>Preço</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setPreco(e)} value={preco} />
+                    <View style={styles.inputView}>
+                        <Text style={styles.inputText}>Preço</Text>
+                        <TextInput placeholder='Ex.: 699.90' style={styles.input} onChangeText={(e) => setPreco(e)} value={preco} />
                     </View>
 
-                    <View style={styles.inputTxtRow}>
-                        <Text>Quantidade de estoque</Text>
-                        <TextInput style={styles.input} onChangeText={(e) => setQuantidadeEstoque(e)} value={quantidadeEstoque} />
+                    <View style={styles.inputView}>
+                        <Text style={styles.inputText}>Quantidade de estoque</Text>
+                        <TextInput placeholder='Ex.: 50' style={styles.input} onChangeText={(e) => setQuantidadeEstoque(e)} value={quantidadeEstoque} />
                     </View>
 
-                    <View style={styles.inputTxtRow}>
-                        <Text>Categoria</Text>
+                    <View style={styles.inputView}>
+                        <Text style={styles.inputText}>Categoria</Text>
                         <Picker
-                            style={{ width: 50, height: 50 }}
-                            selectedValue={"Nada"}
+                            style={styles.picker}
+                            selectedValue={categoria}
                             onValueChange={(itemValue) =>
                                 setCategoria(itemValue)
                             }>
@@ -87,18 +88,20 @@ function ProductRegister() {
 
                         </Picker>
                     </View>
-
-
                 </View>
-                <View style={styles.msgCadastro}>
-                    <TouchableOpacity onPress={handleNewProduct}>
-                        <Text style={styles.msgBtn}>Cadastrar Produto</Text>
+
+
+
+                <View style={[styles.msgCadastro, styles.inputView]}>
+                    <TouchableOpacity style={styles.btn} onPress={handleNewProduct}>
+                        <Text style={styles.tituloBtn}>Cadastrar Produto</Text>
 
                     </TouchableOpacity>
                 </View>
-            </View>
 
-        </View >
+            </View >
+        </View>
+
     );
 }
 
@@ -106,44 +109,4 @@ function ProductRegister() {
 export default ProductRegister;
 
 
-const styles = StyleSheet.create({
-    inputs: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    inputTxtRow: {
-        flexDirection: "row"
-    },
-    inputTxt: {
-        borderColor: '#000',
-        borderWidth: 2,
-        borderRadius: 10,
-        width: 250,
-        padding: 10,
-        marginBottom: 20
-    },
 
-    input: {
-        borderColor: '#000',
-        borderBottomWidth: 2,
-        width: '100%',
-        height: 40,
-        padding: 10
-    },
-
-    msgCadastro: {
-        marginTop: 20,
-        flexDirection: 'row',
-    },
-
-    msg: {
-        fontSize: 16
-    },
-
-    msgBtn: {
-        fontSize: 16,
-        color: '#29d97b'
-    }
-
-});
