@@ -1,67 +1,69 @@
+import { StyleSheet } from 'react-native';
+import {windowHeight, windowWidth} from '../../helpers/dimensions'
 const styles = StyleSheet.create({
     inputs: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },
-
-    cxtTxt: {
-        alignItems: 'center',
-        justifyContent: 'center'
+    inputView:{
+        width:"85%",
+        marginTop: 12,
+        alignSelf: "center"
     },
-
-    inputTxt: {
+    picker: {
+        minWidth: "80%",
+        height: 25
+    },
+    
+    form: {
         borderColor: '#000',
         borderWidth: 0.5,
         borderRadius: 10,
-        width: windowWidth / 1.5,
+        width: windowWidth / 1.3,
         padding: 5,
-        marginBottom: windowHeight / 30,
+        marginBottom: windowHeight / 30,        
+        alignSelf:'center'
+        
+    },
+    body:{
+        flex:1,
+        justifyContent:"center"
     },
 
     input: {
-        width: '100%',
-        height: windowHeight / 15,
-        padding: 3,
-        textDecorationLine: 'none'
+       borderWidth:0.5,
+       borderColor: "#666",
+       borderRadius: 5,
+       padding:6,
+       width: '100%', 
     },
-
+    inputText:{
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#000',   
+    },
     msgCadastro: {
         marginTop: 20,
-        flexDirection: 'row',
-    },
-
-    msg: {
-        fontSize: 16
-    },
-
-    msgBtn: {
-        fontSize: 16,
-        color: '#29d97b'
-    },
-
-    btn: {
-        borderColor: '#000',
-        borderWidth: 0.5,
-        borderRadius: 10,
+        backgroundColor: '#000',
+        height: 35,
+        borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
-        width: windowWidth / 1.8,
-        backgroundColor: '#000',
     },
-
-    txt: {
-        fontSize: 20,
-        fontWeight: '500',
+    tituloBtn: {
+        fontSize: 16,
+        fontWeight:"500",
         color: '#fff',
-        padding: 10,
     },
 
-    btnLogin: {
-        marginTop: windowHeight / 60,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
+    
+
+    
+
+    
+
+    
 });
 
+export default styles;
