@@ -3,7 +3,7 @@ import { View, ScrollView, StyleSheet } from 'react-native'
 import ScrollItens from '../../components/Home/ScrollItens'
 import Carrousel from '../../components/Home/carrousel'
 import ImagemHome1 from '../../components/Home/ImagemHome1'
-
+import ImagemHome2 from '../../components/Home/propagandaAdidas'
 function Home() {
 
     return (
@@ -17,6 +17,10 @@ function Home() {
                 <ScrollItens/>
 
                 <ImagemHome1 />
+
+                <ScrollItens/>
+
+                <ImagemHome2 />
 
             </ScrollView>
        

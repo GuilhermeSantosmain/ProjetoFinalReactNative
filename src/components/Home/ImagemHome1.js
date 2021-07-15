@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import { AuthContext } from '../../contexts/auth'
 import { useNavigation } from '@react-navigation/native';
-
+import { windowWidth, windowHeight } from '../../helpers/dimensions'
 
 
 const ImagemHome1 = () => {
@@ -42,8 +42,8 @@ export default ImagemHome1;
 const styles = StyleSheet.create({
     container:{
         backgroundColor: '#fff',
-        marginTop: 25,
-        padding: 10
+        marginTop: windowHeight / 45,
+        padding: 20
     },
 
     img:{
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     },
 
     imageHome:{
-        width: '100%',
-        height: 550,
+        width: windowWidth / 1,
+        height: windowHeight / 1.2,
         borderRadius: 5,
     },
 
@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
     },
 
     subTitulo:{
-        marginTop: 5,
-        marginLeft: 10,
+        marginTop: windowHeight / 50,
+        marginLeft: windowHeight / 35,
         fontSize: 16,
         fontWeight: '700',
     },
