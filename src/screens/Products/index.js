@@ -69,7 +69,6 @@ const Products = () => {
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         pagingEnabled
-        numColumns={2}
       />
     </SafeAreaView>
   );
@@ -91,15 +90,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-
-  container: {
-    flex: 1,
-    display: "flex",
-    justifyContent: "space-around",
-    backgroundColor: "red",
-    flexDirection: "row",
-  },
-
+  
   title: {
     marginTop: 10,
   },
