@@ -38,8 +38,6 @@ const AuthProvider = ({ children }) => {
             }
             if (storageCart) {
                 setCart(JSON.parse(storageCart))
-                console.warn(JSON.parse(storageCart))
-
             }
         }
         loadStorage()

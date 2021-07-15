@@ -21,14 +21,22 @@ const Product = ({ route, navigation }) => {
                 preco: produto.preco,
                 quantidade: quantidade
             }
-            await setCart(oldCart => [...oldCart, produtoCart])
-            storageCart(cart)
+            let array = []
+            setCart((oldCart) => {
+                array = [...oldCart, produtoCart]
+                return [...oldCart, produtoCart]
+            })
+            storageCart(array)
             alert('Produto adicionado ao carrinho')
         } else {
             alert('Informe a quantidade')
         }
-
     }
+
+
+    // async function teste(produtoCart) {
+    //     
+    // }
 
     async function storageCart(data) {
         await AsyncStorage.setItem('Cart_user', JSON.stringify(data))
