@@ -36,7 +36,7 @@ const itens = [
         url: 'https://images.lojanike.com.br/500x500/produto/tenis-nike-air-max-zm950-masculino-CJ6700-001-1.jpg',
         nome: 'Tênis Nike Air Max ZM950 Masculino',
         preco: 'R$ 619,99 '
-    },    {
+    }, {
         id: 'ABC',
         url: 'https://images.lojanike.com.br/500x500/produto/tenis-nike-sb-nyjah-free-2-unissex-BV2078-103-1.jpg',
         nome: 'Tênis Nike SB Nyjah Free 2 Unissex',
@@ -70,24 +70,24 @@ const itens = [
 ]
 
 const renderItem = ({ item }) => (
-  
-        <TouchableOpacity style={styles.iconsBtn}>
-            <View>
-                <Image source={{uri: item.url}} style={styles.img} />
-                
-                <Text style={styles.title}>{item.nome}</Text>
-                <Text style={styles.title}>{item.preco}</Text>
-            </View>
-        </TouchableOpacity>
-  
-  );
+
+    <TouchableOpacity style={styles.iconsBtn}>
+        <View>
+            <Image source={{ uri: item.url }} style={styles.img} />
+
+            <Text style={styles.title}>{item.nome}</Text>
+            <Text style={styles.title}>{item.preco}</Text>
+        </View>
+    </TouchableOpacity>
+
+);
 
 
 const ScrollItens = () => {
     const { produtos } = useContext(AuthContext)
 
     const navigation = useNavigation();
-  
+
 
     return (
         <View style={styles.container}>
@@ -103,19 +103,19 @@ const ScrollItens = () => {
                         <Text style={styles.tituloTudo}>Ver tudo</Text>
                     </TouchableOpacity>
                 </View>
-            </View>    
+            </View>
 
 
-                    <SafeAreaView style={styles.linhaIcons}>
-                    <FlatList
-                        data={itens}
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                    />
-                </SafeAreaView>
-      
+            <SafeAreaView style={styles.linhaIcons}>
+                <FlatList
+                    data={produtos}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                />
+            </SafeAreaView>
+
         </View>
     )
 }
@@ -123,43 +123,43 @@ const ScrollItens = () => {
 export default ScrollItens;
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         backgroundColor: '#fff',
         marginTop: 20
     },
 
-    img:{ 
+    img: {
         width: 120,
-        height:70,
+        height: 70,
     },
 
-    iconsBtn:{
+    iconsBtn: {
         width: 150,
     },
-    linhaIcons:{
+    linhaIcons: {
         marginLeft: 15,
     },
 
-    tituloLinha:{
-        flexDirection:'row',
+    tituloLinha: {
+        flexDirection: 'row',
         justifyContent: 'space-between',
         width: '90%',
     },
 
-    tituloNovidade:{
+    tituloNovidade: {
         fontSize: 22,
         fontWeight: '700',
     },
 
-    tituloTudo:{
+    tituloTudo: {
         fontSize: 16,
         textDecorationLine: 'underline',
         fontWeight: '700',
-    },  
+    },
 
-    enunciadoGeral:{
+    enunciadoGeral: {
         alignItems: 'center',
     }
 
-    
+
 })

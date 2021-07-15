@@ -68,18 +68,21 @@ const Products = () => {
   console.warn(produtos)
 
   return (
+
     <View style={styles.produtcs}>
-      <ScrollView>
-        <FlatList
-          numColumns={2}
-          contentContainerStyle={styles.flatList}
-          data={itens}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          pagingEnabled
-        />
-      </ScrollView>
+
+      <FlatList
+        scrollEnabled={true}
+        numColumns={2}
+        contentContainerStyle={styles.flatList}
+        data={produtos}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        pagingEnabled
+      />
+
     </View>
+
   );
 };
 

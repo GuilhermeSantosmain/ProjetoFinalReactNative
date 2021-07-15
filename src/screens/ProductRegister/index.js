@@ -9,7 +9,7 @@ import styles from './styles'
 
 function ProductRegister() {
     const navigation = useNavigation();
-    const { http, categorias, setCategorias } = useContext(AuthContext)
+    const { http } = useContext(AuthContext)
 
     const [codigo, setCodigo] = useState('')
     const [descricaoProduto, setDescricaoProduto] = useState('')
@@ -17,27 +17,25 @@ function ProductRegister() {
     const [nomeProduto, setNomeProduto] = useState('')
     const [preco, setPreco] = useState('')
     const [categoria, setCategoria] = useState('')
-
-    const [newProduct, setNewProduct] = useState({})
+    const [categorias, setCategorias] = useState([])
 
 
     async function handleNewProduct() {
-        const produto = {
+        let produto = {
             codigo: codigo,
             nome: nomeProduto,
             descricao: descricaoProduto,
             preco: preco,
-            quantidadeEstoque: quantidadeEstoque,
-            categoria: categoria
+            quantidadeEstoque: Number.parseInt(quantidadeEstoque, 10),
+            categoria: { id: Number.parseInt(categoria, 10) }
+
         }
-        console.log(produto)
-        setNewProduct(produto)
-        http.post('produto', newProduct).then(console.log("Produto cadastrado")).catch(erro => console.log(erro))
+        http.post('produto', produto).then(console.log("Produto cadastrado")).catch(erro => console.log(erro))
     }
 
     useEffect(() => {
         http.get('categoria/todas').then((response) => { setCategorias(response.data) })
-    })
+    }, [])
 
 
     return (
@@ -93,7 +91,7 @@ function ProductRegister() {
 
 
                 <View style={[styles.msgCadastro, styles.inputView]}>
-                    <TouchableOpacity style={styles.btn} onPress={handleNewProduct}>
+                    <TouchableOpacity style={styles.btn} onPress={() => handleNewProduct()}>
                         <Text style={styles.tituloBtn}>Cadastrar Produto</Text>
 
                     </TouchableOpacity>
