@@ -32,11 +32,18 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         async function loadStorage() {
             const storageUser = await AsyncStorage.getItem('Auth_user')
+            const storageCart = await AsyncStorage.getItem('Cart_user')
             if (storageUser) {
                 setUser(JSON.parse(storageUser))
             }
+            if (storageCart) {
+                setCart(JSON.parse(storageCart))
+                console.warn(JSON.parse(storageCart))
+
+            }
         }
         loadStorage()
+
     }, [])
 
     async function logIn(email, password) {
@@ -83,12 +90,17 @@ const AuthProvider = ({ children }) => {
         await AsyncStorage.clear().then(() => { setUser(null) })
     }
 
+    async function closeBuy() {
+        let data = []
+        await AsyncStorage.setItem('Cart_user', JSON.stringify(data)).then(() => { setCart(data) })
+    }
+
     async function storageUser(data) {
         await AsyncStorage.setItem('Auth_user', JSON.stringify(data))
     }
 
     return (
-        <AuthContext.Provider value={{ signed: !!user, user, signIn, logIn, logOut, http, cart, setCart }} >
+        <AuthContext.Provider value={{ signed: !!user, user, signIn, logIn, logOut, http, cart, setCart, closeBuy }} >
             {children}
         </AuthContext.Provider>
     );
