@@ -8,6 +8,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Signin from './src/screens/Signin';
 import ProductRegister from './src/screens/ProductRegister';
 import CategoryRegister from './src/screens/CategoryRegister';
+import ProductEdit from './src/screens/ProductEdit';
+
 // console.disableYellowBox = true;
 const Stack = createStackNavigator();
 
@@ -21,6 +23,7 @@ export default function App() {
           <Stack.Screen name="Cadastro" component={Signin} />
           <Stack.Screen name="ProductRegister" component={ProductRegister} />
           <Stack.Screen name="CategoryRegister" component={CategoryRegister} />
+          <Stack.Screen name="ProductEdit" component={ProductEdit} />
         </Stack.Navigator>
       </AuthProvider>
     </NavigationContainer>
