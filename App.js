@@ -9,6 +9,7 @@ import Signin from './src/screens/Signin';
 import ProductRegister from './src/screens/ProductRegister';
 import CategoryRegister from './src/screens/CategoryRegister';
 import ProductEdit from './src/screens/ProductEdit'
+import Product from './src/screens/Product';
 
 // console.disableYellowBox = true;
 const Stack = createStackNavigator();
@@ -24,6 +25,7 @@ export default function App() {
           <Stack.Screen name="ProductRegister" component={ProductRegister} />
           <Stack.Screen name="CategoryRegister" component={CategoryRegister} />
           <Stack.Screen name="ProductEdit" component={ProductEdit} />
+          <Stack.Screen name="Product" component={Product} />
         </Stack.Navigator>
       </AuthProvider>
     </NavigationContainer>

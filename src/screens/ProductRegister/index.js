@@ -59,6 +59,10 @@ function ProductRegister() {
                         <Text style={styles.inputText}>Descrição</Text>
                         <TextInput placeholder='Ex.: Masculino, Rosa etc' style={styles.input} onChangeText={(e) => setDescricaoProduto(e)} value={descricaoProduto} />
                     </View>
+                    <View style={styles.inputView}>
+                        <Text style={styles.inputText}>Preço</Text>
+                        <FileReader style={styles.input} />
+                    </View>
 
                     <View style={styles.inputView}>
                         <Text style={styles.inputText}>Preço</Text>
