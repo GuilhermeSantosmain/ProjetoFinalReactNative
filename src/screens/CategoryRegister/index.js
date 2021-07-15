@@ -26,12 +26,12 @@ function CategoryRegister() {
             <View style={styles.txts}>
                 <View style={styles.inputTxt} >
                     <View style={styles.inputTxtRow}>
-                        <Text style={styles.tituloBtn}>Nome da categoria</Text>
+                        <Text style={styles.inputText}>Nome da categoria</Text>
                         <TextInput style={styles.input} placeholder="Nome" onChangeText={(e) => setNomeCategoria(e)} value={nomeCategoria} />
                     </View>
 
                     <View style={styles.inputTxtRow}>
-                        <Text style={styles.tituloBtn}>Descricao</Text>
+                        <Text style={styles.inputText}>Descricao</Text>
                         <TextInput style={styles.input} placeholder="Descrição" onChangeText={(e) => setDescricaoCategoria(e)} value={descricaoCategoria} />
                     </View>
 
@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        
     },
 
     msgBtn: {
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
 
-    tituloBtn:{
+    inputText:{
         fontSize: 16,
         fontWeight: 'bold'
     },
