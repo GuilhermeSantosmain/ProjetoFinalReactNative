@@ -4,6 +4,7 @@ import ScrollItens from '../../components/Home/ScrollItens'
 import Carrousel from '../../components/Home/carrousel'
 import ImagemHome1 from '../../components/Home/ImagemHome1'
 import ImagemHome2 from '../../components/Home/propagandaAdidas'
+import Footer from '../../components/Home/footer'
 function Home() {
 
     return (
@@ -21,6 +22,8 @@ function Home() {
                 <ScrollItens/>
 
                 <ImagemHome2 />
+
+                <Footer />
 
             </ScrollView>
        
