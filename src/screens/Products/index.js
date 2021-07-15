@@ -6,7 +6,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  Dimensions
+  Dimensions,
+  ScrollView
 } from "react-native";
 import { AuthContext } from "../../contexts/auth";
 
@@ -64,17 +65,20 @@ const renderItem = ({ item }) => (
 
 const Products = () => {
   const { produtos } = useContext(AuthContext);
+  console.warn(produtos)
 
   return (
     <View style={styles.produtcs}>
-
-      <FlatList
-        contentContainerStyle={styles.flatList}
-        data={itens}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        pagingEnabled
-      />
+      <ScrollView>
+        <FlatList
+          numColumns={2}
+          contentContainerStyle={styles.flatList}
+          data={itens}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          pagingEnabled
+        />
+      </ScrollView>
     </View>
   );
 };
@@ -104,11 +108,6 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center'
-  },
-  flatList: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    flexWrap: 'wrap'
   },
   produtcs: {
     justifyContent: 'center',
