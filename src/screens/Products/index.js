@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    height: windowHeight / 3.5,
+    height: windowHeight / 3,
     width: windowWidth / 2,
     alignItems: 'center',
     justifyContent: 'center',
