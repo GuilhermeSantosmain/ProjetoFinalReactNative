@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, Image, StyleSheet } from 'react-native';
-import { windowHeight, windowWidth } from '../../helpers/dimensions';
+import { windowHeight, windowWidth } from '../../../helpers/dimensions';
 
 const ProductCard = ({ item, navigation }) => {
     return (

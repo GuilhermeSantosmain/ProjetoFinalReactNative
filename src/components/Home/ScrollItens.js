@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { View, FlatList, Text, StyleSheet, TouchableOpacity, Image, SafeAreaView } from 'react-native'
-import Products from '../../components/Products'
+// import Products from '../../components/Products'
 import { AuthContext } from '../../contexts/auth'
 import { useNavigation } from '@react-navigation/native';
 
