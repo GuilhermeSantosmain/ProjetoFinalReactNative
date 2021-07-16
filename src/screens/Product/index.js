@@ -71,7 +71,7 @@ const Product = ({ route, navigation }) => {
                 </View>
 
                 <View style={styles.capaImg}>
-                    <Image source={produto.url} style={styles.img} />
+                    <Image source={{ uri: produto.url }} style={styles.img} />
                 </View>
 
                 <View>

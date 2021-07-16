@@ -28,54 +28,54 @@ const Home = () => {
             <ImageBackground source={image} style={styles.container}>
                 <View style={styles.inputsForm}>
                     <View>
-                <View style={styles.userDatail}>
-                    <Text style={styles.greetings}>
-                        Bem vindo {perfil.nome}
-                    </Text>
-                    <Text style={styles.tipeAcc}>
-                        Tipo de conta: ADM
-                    </Text>
-                    <Foundation name='torso-business' size={70} />
-                </View>
-                <View style={styles.adminArea}>
-                    <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('CategoryRegister')}>
-                        <Text style={styles.txtBtn}>
-                            Cadastrar categorias
-                        </Text >
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('CategoryEdit')}>
-                        <Text style={styles.txtBtn}>
-                            Editar categoria
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('ProductRegister')}>
-                        <Text style={styles.txtBtn}>
-                            Cadastrar produtos
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('ProductEdit')}>
-                        <Text style={styles.txtBtn}>
-                            Editar produto
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('CategoryRegister')}>
-                        <Text style={styles.txtBtn}>
-                            Ver todos os pedidos
-                        </Text>
-                    </TouchableOpacity>
-                    
+                        <View style={styles.userDatail}>
+                            <Text style={styles.greetings}>
+                                Bem vindo {perfil.nome}
+                            </Text>
+                            <Text style={styles.tipeAcc}>
+                                Tipo de conta: ADM
+                            </Text>
+                            <Foundation name='torso-business' size={70} />
+                        </View>
+                        <View style={styles.adminArea}>
+                            <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('CategoryRegister')}>
+                                <Text style={styles.txtBtn}>
+                                    Cadastrar categorias
+                                </Text >
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('CategoryEdit')}>
+                                <Text style={styles.txtBtn}>
+                                    Editar categoria
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('ProductRegister')}>
+                                <Text style={styles.txtBtn}>
+                                    Cadastrar produtos
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('ProductEdit')}>
+                                <Text style={styles.txtBtn}>
+                                    Editar produto
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('Work')}>
+                                <Text style={styles.txtBtn}>
+                                    Ver todos os pedidos
+                                </Text>
+                            </TouchableOpacity>
 
 
 
-                </View>
-                <View style={{ padding: 10, margin: 5 }}>
-                    <TouchableOpacity style={styles.btnSair} onPress={() => logOut()}>
-                        <Text style={styles.sair}>
-                            Sair
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-                </View>
+
+                        </View>
+                        <View style={{ padding: 10, margin: 5 }}>
+                            <TouchableOpacity style={styles.btnSair} onPress={() => logOut()}>
+                                <Text style={styles.sair}>
+                                    Sair
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                 </View>
             </ImageBackground>
         )
@@ -83,37 +83,37 @@ const Home = () => {
         return (
             <ImageBackground source={image} style={styles.container}>
                 <View>
-                <View style={styles.userDatail}>
-                    <Text style={styles.greetings}>
-                        Bem vindo {perfil.nome}!
-                    </Text>
+                    <View style={styles.userDatail}>
+                        <Text style={styles.greetings}>
+                            Bem vindo {perfil.nome}!
+                        </Text>
 
-                </View>
-                <View style={styles.userArea}>
-                    <TouchableOpacity style={styles.btnUser} onPress={() => navigation.navigate('CategoryRegister')}>
-                        <Text style={styles.txtBtn}>
-                            Ver suas compras
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnUser} onPress={() => navigation.navigate('ProductRegister')}>
-                        <Text style={styles.txtBtn}>
-                            Carrinho
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnUser} onPress={() => navigation.navigate('CategoryRegister')}>
-                        <Text style={styles.txtBtn}>
-                            Editar informacoes
-                        </Text>
-                    </TouchableOpacity>
+                    </View>
+                    <View style={styles.userArea}>
+                        <TouchableOpacity style={styles.btnUser} onPress={() => navigation.navigate('Work')}>
+                            <Text style={styles.txtBtn}>
+                                Ver suas compras
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.btnUser} onPress={() => navigation.navigate('Cart')}>
+                            <Text style={styles.txtBtn}>
+                                Carrinho
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.btnUser} onPress={() => navigation.navigate('Work')}>
+                            <Text style={styles.txtBtn}>
+                                Editar informacoes
+                            </Text>
+                        </TouchableOpacity>
 
-                </View>
-                <View style={{ padding: 10, margin: 5 }}>
-                    <TouchableOpacity style={styles.btnSair} onPress={() => logOut()}>
-                        <Text style={styles.sair}>
-                            Sair
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+                    </View>
+                    <View style={{ padding: 10, margin: 5 }}>
+                        <TouchableOpacity style={styles.btnSair} onPress={() => logOut()}>
+                            <Text style={styles.sair}>
+                                Sair
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </ImageBackground>
         )
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
         // textShadowRadius: 10
     },
 
-    tipeAcc:{
+    tipeAcc: {
         fontSize: 18,
         fontWeight: '500',
     },
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
 
-    btnSair:{
+    btnSair: {
         height: 50,
         justifyContent: 'center',
         alignItems: 'center',
@@ -192,13 +192,13 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
 
-    sair:{
+    sair: {
         color: '#fff',
         fontSize: 20,
         fontWeight: '500'
     },
-    
-    txtBtn:{
+
+    txtBtn: {
         color: '#000',
         fontSize: 18,
         fontWeight: '400'
