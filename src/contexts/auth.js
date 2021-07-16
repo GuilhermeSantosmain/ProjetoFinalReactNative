@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [cart, setCart] = useState([])
     const http = axios.create({
-        baseURL: 'http://192.168.0.6:8080',
+        baseURL: 'http://192.168.1.103:8080',
     })
 
     useEffect(() => {

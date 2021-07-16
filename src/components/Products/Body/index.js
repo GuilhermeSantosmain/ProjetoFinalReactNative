@@ -18,16 +18,18 @@ const Products = () => {
 
 
   const [produtos, setProdutos] = useState([]);
+  const [busca, setBusca] = useState('');
   const [produtosFiltrados, setProdutosFiltrados] = useState([]);
   const { http } = useContext(AuthContext)
   const navigation = useNavigation()
 
   function onChangeSearch(query) {
-    if (query.length > 2) {
+    setBusca(query)
+    if (busca.length >= 2) {
       setProdutosFiltrados(
         produtos.filter(p => {
           let n = p.nome.toLocaleLowerCase()
-          return n.includes(query.toLocaleLowerCase())
+          return n.includes(busca.toLocaleLowerCase())
         }),
       );
     } else {
@@ -46,7 +48,7 @@ const Products = () => {
       <TextInput
         placeholder="Search"
         onChangeText={(query) => onChangeSearch(query)}
-        value={produtosFiltrados}
+        value={busca}
         style={styles.pesquisa}
       />
 
