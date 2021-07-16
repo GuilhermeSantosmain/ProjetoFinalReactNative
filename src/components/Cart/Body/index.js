@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList} from 'react-native';
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import styles from "./styles"
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../../contexts/auth';
@@ -25,12 +25,12 @@ const Body = () => {
 
                 <View style={styles.produtcs}>
                     <FlatList
-                    numColumns={1}
-                    contentContainerStyle={styles.flatList}
-                    data={cart}
-                    renderItem={({ item }) => <ProductCard item={item} navigation={navigation} />}
-                    keyExtractor={(item) => item.id}
-                    pagingEnabled
+                        numColumns={1}
+                        contentContainerStyle={styles.flatList}
+                        data={cart}
+                        renderItem={({ item }) => <ProductCard key={item.id} item={item} navigation={navigation} />}
+                        keyExtractor={(item) => item.id}
+                        pagingEnabled
                     />
                 </View>
 
@@ -38,7 +38,7 @@ const Body = () => {
                     <Text style={styles.finalizaTxt}>
                         Finalizar compra
                     </Text>
-                    
+
                 </TouchableOpacity>
             </View>
         )

@@ -14,20 +14,25 @@ const Product = ({ route, navigation }) => {
     const [quantidade, setQuantidade] = useState(null)
     const [count, setCount] = useState(0);
     const add = () => setCount(incremento => {
-            setQuantidade(incremento + 1)
-            return incremento + 1
-            });
+        setQuantidade(incremento + 1)
+        return incremento + 1
+    });
 
-    const deletar = () => {if(count<= 0){} else{setCount(decremento =>{
-        setQuantidade(decremento - 1)
-        return decremento - 1})}}  ;
+    const deletar = () => {
+        if (count <= 0) { } else {
+            setCount(decremento => {
+                setQuantidade(decremento - 1)
+                return decremento - 1
+            })
+        }
+    };
 
 
     useEffect(() => {
         http.get('produto/' + item.nome).then(response => setProduto(response.data))
     }, [])
 
-  
+
 
     async function addToCart() {
         if (quantidade != null) {
@@ -49,18 +54,13 @@ const Product = ({ route, navigation }) => {
         }
     }
 
-
-    // async function teste(produtoCart) {
-    //     
-    // }
-
     async function storageCart(data) {
         await AsyncStorage.setItem('Cart_user', JSON.stringify(data))
     }
 
     return (
         <ScrollView
-        showsHorizontalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
         >
 
             <View style={styles.shoes}>
@@ -70,11 +70,11 @@ const Product = ({ route, navigation }) => {
                 </View>
 
                 <View style={styles.capaImg}>
-                    <Image  source={produto.url} style={styles.img} />
+                    <Image source={produto.url} style={styles.img} />
                 </View>
 
                 <View>
-                
+
                     <View style={styles.cxDescricao}>
                         <Text style={styles.descricao}> {produto.descricao}</Text>
                     </View>
@@ -85,7 +85,7 @@ const Product = ({ route, navigation }) => {
                     <View style={styles.contador}>
 
                         <TouchableOpacity style={styles.button} onPress={add}>
-                            <AntDesign name="plus" color="#000" size={25} /> 
+                            <AntDesign name="plus" color="#000" size={25} />
                         </TouchableOpacity>
 
                         <View style={styles.cxQtd}>
@@ -93,7 +93,7 @@ const Product = ({ route, navigation }) => {
                         </View>
 
                         <TouchableOpacity style={styles.button} onPress={deletar}>
-                            <AntDesign name="minus" color="#000" size={25} /> 
+                            <AntDesign name="minus" color="#000" size={25} />
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -113,16 +113,16 @@ const Product = ({ route, navigation }) => {
 export default Product
 
 const styles = StyleSheet.create({
-    shoes:{
-        flex:1,
-        justifyContent:'center',
+    shoes: {
+        flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
     },
 
 
-    img:{
-      width: windowWidth / 1.3,
-      height: windowWidth / 1.3,
+    img: {
+        width: windowWidth / 1.3,
+        height: windowWidth / 1.3,
     },
 
     titulo: {
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
         fontWeight: '700'
     },
 
-    btn:{
+    btn: {
         borderColor: '#000',
         borderWidth: 0.5,
         borderRadius: 10,
@@ -151,44 +151,44 @@ const styles = StyleSheet.create({
         backgroundColor: '#000',
     },
 
-    btnTxt:{
+    btnTxt: {
         fontSize: 18,
         fontWeight: '500',
         color: '#fff',
         padding: 10,
     },
 
-    cxDescricao:{
+    cxDescricao: {
         width: windowWidth / 1.1,
     },
 
-    descricao:{
+    descricao: {
         fontSize: 17,
         textAlign: 'center',
     },
 
-    qtdTitulo:{
+    qtdTitulo: {
         fontSize: 18,
         fontWeight: '700'
     },
 
-    cont:{
+    cont: {
         padding: windowWidth / 30,
         alignItems: 'center',
-        justifyContent:'center'
+        justifyContent: 'center'
     },
 
-    contador:{
-        flexDirection:'row',
+    contador: {
+        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent:'center'
+        justifyContent: 'center'
     },
 
-    button:{
+    button: {
         padding: windowWidth / 45,
     },
 
-    qtd:{
+    qtd: {
         fontSize: 18,
     }
 
