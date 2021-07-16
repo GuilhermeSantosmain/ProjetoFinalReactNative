@@ -42,9 +42,19 @@ const Home = () => {
                             Cadastrar categorias
                         </Text >
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('CategoryEdit')}>
+                        <Text style={styles.txtBtn}>
+                            Editar categoria
+                        </Text>
+                    </TouchableOpacity>
                     <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('ProductRegister')}>
                         <Text style={styles.txtBtn}>
                             Cadastrar produtos
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('ProductEdit')}>
+                        <Text style={styles.txtBtn}>
+                            Editar produto
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('CategoryRegister')}>
@@ -52,11 +62,7 @@ const Home = () => {
                             Ver todos os pedidos
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnAdm} onPress={() => navigation.navigate('ProductEdit')}>
-                        <Text style={styles.txtBtn}>
-                            Editar produtos
-                        </Text>
-                    </TouchableOpacity>
+                    
 
 
 
