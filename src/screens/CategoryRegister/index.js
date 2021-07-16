@@ -17,7 +17,7 @@ function CategoryRegister() {
         }
         await http.post('categoria', categoria)
             .catch(error => console.warn(error))
-
+            navigation.goBack()
     }
 
     return (

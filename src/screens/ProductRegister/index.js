@@ -34,6 +34,7 @@ function ProductRegister() {
         }
         console.log(url)
         http.post('produto', produto).then(console.log("Produto cadastrado")).catch(erro => console.log(erro))
+        navigation.goBack()
     }
 
     useEffect(() => {
