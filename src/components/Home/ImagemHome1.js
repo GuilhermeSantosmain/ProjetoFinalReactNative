@@ -42,7 +42,7 @@ export default ImagemHome1;
 const styles = StyleSheet.create({
     container:{
         backgroundColor: '#fff',
-        marginTop: windowHeight / 45,
+        marginTop: windowHeight / 100,
         padding: 20
     },
 

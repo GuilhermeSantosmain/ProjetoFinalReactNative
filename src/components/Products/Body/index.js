@@ -9,7 +9,6 @@ import { AuthContext } from "../../../contexts/auth";
 import ProductCard from '../Card/index';
 import { useNavigation } from "@react-navigation/native";
 
-
 const Products = () => {
   const [produtos, setProdutos] = useState([]);
   const { http } = useContext(AuthContext)
