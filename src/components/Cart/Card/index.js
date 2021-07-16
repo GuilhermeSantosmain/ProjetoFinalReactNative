@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TouchableOpacity, View, Text, Image, StyleSheet } from 'react-native';
 import { windowHeight, windowWidth } from '../../../helpers/dimensions';
+import { AuthContext } from '../../../contexts/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-const ProductCard = ({ item, navigation }) => {
+const ProductCard = ({ item, navigation, key }) => {
+    const { cart, setCart } = useContext(AuthContext)
+    function handleDelete() {
+        setCart(cart.filter(v => v !== item))
+        storageCart(cart.filter(v => v !== item))
+    }
+
+    async function storageCart(data) {
+        await AsyncStorage.setItem('Cart_user', JSON.stringify(data))
+    }
+
     return (
         <TouchableOpacity onPress={() => navigation.navigate('Product', { item })}>
             <View style={styles.card}>
@@ -15,9 +27,9 @@ const ProductCard = ({ item, navigation }) => {
                     <Text style={styles.title}>R$ {item.preco}</Text>
 
                     <TouchableOpacity style={styles.btn}>
-                        <View>
+                        <TouchableOpacity onPress={() => handleDelete()}>
                             <Text style={styles.txtBtn}>Remover do carrinho</Text>
-                        </View>
+                        </TouchableOpacity>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -34,7 +46,7 @@ const styles = StyleSheet.create({
     card: {
         height: windowHeight / 4,
         width: windowWidth / 1.1,
-       flexDirection: 'row',
+        flexDirection: 'row',
         shadowColor: "#000",
         alignItems: 'center',
         justifyContent: 'center',
@@ -53,23 +65,23 @@ const styles = StyleSheet.create({
         fontWeight: '400'
     },
 
-    btn:{
+    btn: {
         backgroundColor: '#ad1f15',
         borderRadius: 15,
-        alignItems:'center',
+        alignItems: 'center',
         justifyContent: 'center',
-        width: windowWidth/ 2,
+        width: windowWidth / 2,
         marginTop: 10
     },
 
-    txtBtn:{
-        padding: windowWidth/55,
+    txtBtn: {
+        padding: windowWidth / 55,
         width: '100%',
         fontSize: 16,
         fontWeight: '500'
     },
 
-    txt:{
+    txt: {
         alignItems: 'center',
         justifyContent: 'center'
     }
