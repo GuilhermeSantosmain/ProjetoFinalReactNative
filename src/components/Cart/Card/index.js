@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
     title: {
         textAlign: 'center',
         fontSize: 14,
-        fontWeight: '400'
+        fontWeight: '400',
+        width: windowWidth /2
     },
 
     btn: {

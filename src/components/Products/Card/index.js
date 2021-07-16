@@ -16,8 +16,8 @@ const ProductCard = ({ item, navigation }) => {
 
 const styles = StyleSheet.create({
     img: {
-        width: 130,
-        height: 130,
+        width: windowWidth/1.9,
+        height: windowWidth/2.4,
     },
 
     card: {
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     title: {
         textAlign: 'center',
         fontSize: 14,
-        fontWeight: '400'
+        fontWeight: '400',
+        width: 130,
     },
 })
 

@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     },
 
     input: {
-        width: '90%',
+        width: '80%',
         height: windowHeight / 15,
         padding: 3,
         textDecorationLine: 'none'

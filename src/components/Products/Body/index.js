@@ -18,24 +18,26 @@ const Products = () => {
 
 
   const [produtos, setProdutos] = useState([]);
+  const [busca, setBusca] = useState('');
   const [produtosFiltrados, setProdutosFiltrados] = useState([]);
   const { http } = useContext(AuthContext)
   const navigation = useNavigation()
 
-  const [searchQuery, setSearchQuery] = React.useState('');
-
-  const onChangeSearch = query => {
-    setSearchQuery(query)
-    if (searchQuery.length > 2) {
+  function onChangeSearch(query) {
+    setBusca(query)
+    if (busca.length >= 2) {
       setProdutosFiltrados(
-        produtos.filter(p => p.nome.includes(searchQuery.toLocaleLowerCase())),
+        produtos.filter(p => {
+          let n = p.nome.toLocaleLowerCase()
+          return n.includes(busca.toLocaleLowerCase())
+        }),
       );
     } else {
       setProdutosFiltrados(produtos);
     }
   };
 
- 
+
   useEffect(() => {
     http.get('produto/todos').then((response) => setProdutos(response.data)).catch(error => console.warn(error))
     http.get('produto/todos').then((response) => setProdutosFiltrados(response.data)).catch(error => console.warn(error))
@@ -44,11 +46,11 @@ const Products = () => {
   return (
     <View style={styles.produtcs}>
       <TextInput
-      placeholder="Search"
-      onChangeText={onChangeSearch}
-      value={searchQuery}
-      style={styles.pesquisa}
-    />
+        placeholder="Search"
+        onChangeText={(query) => onChangeSearch(query)}
+        value={busca}
+        style={styles.pesquisa}
+      />
 
       <FlatList
         numColumns={2}
@@ -70,11 +72,11 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   pesquisa: {
-   borderColor: 'black',
-   borderWidth: 0.5,
-   width: '80%',
-   borderRadius: 10,
-   height: 30,
-    
+    borderColor: 'black',
+    borderWidth: 0.5,
+    width: '80%',
+    borderRadius: 10,
+    height: 30,
+
   },
 });
