@@ -1,10 +1,20 @@
-import React, { useContext } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useContext, useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, FlatList} from 'react-native';
 import styles from "./styles"
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../../contexts/auth';
+import ProductCard from '../Card/index';
+
 
 const Body = () => {
+ 
+    const [produtos, setProdutos] = useState([]);
+    const { http } = useContext(AuthContext)
+    useEffect(() => {
+        http.get('produto/todos').then((response) => setProdutos(response.data)).catch(error => console.warn(error))
+      
+    }, [])
+
     const { cart, closeBuy } = useContext(AuthContext)
     const navigation = useNavigation();
     if (cart.length === 0) {
@@ -30,7 +40,7 @@ const Body = () => {
                     pagingEnabled
                     />
                 </View>
-                
+
                 <TouchableOpacity style={styles.finalizaBtn} onPress={() => closeBuy()}>
                     <Text style={styles.finalizaTxt}>
                         Finalizar compra

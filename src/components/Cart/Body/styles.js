@@ -46,6 +46,11 @@ const styles = StyleSheet.create({
 
     },
 
+    produtcs: {
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+
   });
 
   export default styles;

@@ -21,7 +21,7 @@ function CategoryRegister() {
     }
 
     return (
-        <TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
+        // <TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
         <View style={styles.inputs}>
 
             <View style={styles.txts}>
@@ -49,7 +49,7 @@ function CategoryRegister() {
 
         </View>
 
-        </TouchableWithoutFeedback>
+        // </TouchableWithoutFeedback>
     );
 }
 
