@@ -19,7 +19,8 @@ function Signin() {
         navigation.navigate('Products')
     }
 
-    return (<TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
+    return (
+    // <TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
         <View style={styles.inputs}>
 
             <View style={styles.txts}>
@@ -55,7 +56,7 @@ function Signin() {
 
         </View>
 
-    </TouchableWithoutFeedback>
+    // </TouchableWithoutFeedback>
     );
 }
 

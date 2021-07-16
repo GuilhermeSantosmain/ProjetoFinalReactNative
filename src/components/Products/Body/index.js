@@ -3,16 +3,14 @@ import {
   View,
   FlatList,
   StyleSheet,
-  TextInput
+  TextInput,
+  TouchableOpacity
 } from "react-native";
 import { AuthContext } from "../../../contexts/auth";
 import ProductCard from '../Card/index';
 import { useNavigation } from "@react-navigation/native";
-
-
-
-
-
+import { windowWidth, windowHeight } from "../../../helpers/dimensions";
+import { FontAwesome } from '@expo/vector-icons'
 
 const Products = () => {
 
@@ -45,12 +43,17 @@ const Products = () => {
   }, [])
   return (
     <View style={styles.produtcs}>
-      <TextInput
-        placeholder="Search"
-        onChangeText={(query) => onChangeSearch(query)}
-        value={busca}
-        style={styles.pesquisa}
-      />
+      <View style={styles.search}>
+        <TextInput
+          placeholder="Search"
+          onChangeText={(query) => onChangeSearch(query)}
+          value={busca}
+          style={styles.pesquisa}
+        />
+        <TouchableOpacity style={styles.iconPesquisa}>
+          <FontAwesome name='search' size={18} />
+        </TouchableOpacity>
+      </View>
 
       <FlatList
         numColumns={2}
@@ -71,12 +74,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  pesquisa: {
+
+  search:{
     borderColor: 'black',
     borderWidth: 0.5,
-    width: '80%',
+    width: windowWidth / 1.5,
     borderRadius: 10,
-    height: 30,
-
+    height: windowWidth / 10,
+    justifyContent: 'center',
+    flexDirection: 'row',
   },
+
+  pesquisa: {
+    fontSize: 16,
+    marginLeft: windowWidth / 30,
+    width: '80%',
+  },
+
+  iconPesquisa:{
+    width: '20%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+
 });

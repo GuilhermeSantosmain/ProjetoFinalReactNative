@@ -74,7 +74,8 @@ const Home = () => {
         )
     } else {
         return (
-            <ImageBackground source={{ uri: "https://pbs.twimg.com/media/BtYBWwZIQAAcPuw?format=jpg&name=small" }} style={styles.container}>
+            // <ImageBackground source={{ uri: "https://pbs.twimg.com/media/BtYBWwZIQAAcPuw?format=jpg&name=small" }} style={styles.container}>
+                <View>
                 <View style={styles.userDatail}>
                     <Text style={styles.greetings}>
                         Bem vindo {perfil.nome}!
@@ -106,7 +107,8 @@ const Home = () => {
                         </Text>
                     </TouchableOpacity>
                 </View>
-            </ImageBackground>
+                </View>
+            // </ImageBackground>
         )
     }
 }
