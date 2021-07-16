@@ -45,7 +45,8 @@ const Product = ({ route, navigation }) => {
 
     return (
         <View>
-             <Image  source={produto.url} style={styles.img} />
+            ,
+            <Image  source={produto.url} style={styles.img} />
             <Text> {produto.nome}</Text>
             <Text> {produto.preco}</Text>
             <Text> {produto.descricao}</Text>

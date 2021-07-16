@@ -8,7 +8,7 @@ const ProductCard = ({ item, navigation }) => {
             <View style={styles.card}>
                 <Image source={{ uri: item.url }} style={styles.img} />
                 <Text style={styles.title}>{item.nome}</Text>
-                <Text style={styles.title}>{item.preco}</Text>
+                <Text style={styles.title}>R$ {item.preco}</Text>
             </View>
         </TouchableOpacity >)
 
@@ -36,7 +36,9 @@ const styles = StyleSheet.create({
         elevation: 1,
     },
     title: {
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: 14,
+        fontWeight: '400'
     },
 })
 
