@@ -1,11 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, Keyboard, TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { AuthContext } from '../../contexts/auth';
 import { Entypo } from '@expo/vector-icons'
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import styles from './styles';
 
 
 function Signin() {
@@ -21,7 +19,7 @@ function Signin() {
         navigation.navigate('Products')
     }
 
-    return (
+    return (<TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
         <View style={styles.inputs}>
 
             <View style={styles.txts}>
@@ -56,6 +54,8 @@ function Signin() {
             </View>
 
         </View>
+
+    </TouchableWithoutFeedback>
     );
 }
 

@@ -125,18 +125,18 @@ const styles = StyleSheet.create({
       height: windowWidth / 1.3,
     },
 
-    titulo:{
-        justifyContent:'center',
+    titulo: {
+        justifyContent: 'center',
         alignItems: 'center',
     },
 
-    nome:{
+    nome: {
         fontSize: 26,
         fontWeight: '500',
         textAlign: 'center',
     },
 
-    preco:{
+    preco: {
         fontSize: 16,
         fontWeight: '700'
     },

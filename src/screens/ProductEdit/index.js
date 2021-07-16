@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Switch } from 'react-native';
+import { View, Text, Keyboard, TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { AuthContext } from '../../contexts/auth'
 import { Picker } from '@react-native-picker/picker';
 import { useEffect } from 'react/cjs/react.development';
@@ -58,6 +58,7 @@ function ProductEdit() {
 
 
     return (
+        <TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
         <View style={styles.body}>
             <View style={styles.form}>
                 <View style={styles.inputs}>
@@ -131,6 +132,8 @@ function ProductEdit() {
 
             </View >
         </View>
+
+        </TouchableWithoutFeedback>
 
     );
 }

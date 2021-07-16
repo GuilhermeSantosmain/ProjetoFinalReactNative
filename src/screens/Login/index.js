@@ -1,13 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { AuthContext } from '../../contexts/auth'
 import { Entypo } from '@expo/vector-icons'
 import firebase from 'firebase';
 import 'firebase/database'
+import styles from './styles';
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 function Login() {
     const navigation = useNavigation();
@@ -23,6 +22,7 @@ function Login() {
     }
 
     return (
+        <TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
         <View style={styles.inputs}>
 
             <View style={styles.txts}>
@@ -61,6 +61,8 @@ function Login() {
             </View>
 
         </View>
+
+        </TouchableWithoutFeedback>
     );
 }
 
