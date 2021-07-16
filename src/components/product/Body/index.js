@@ -10,11 +10,11 @@ import {
 
 } from "react-native";
 import { AuthContext } from "../../../contexts/auth";
-import ProductCard from '../Card/index';
+import ProductCard from '../ProductCard/index';
 import { useNavigation } from "@react-navigation/native";
 import { windowWidth } from "../../../helpers/dimensions";
 
-const Products = () => {
+const ProductsScroll = () => {
   const [produtos, setProdutos] = useState([]);
   const { http } = useContext(AuthContext)
   const navigation = useNavigation()
@@ -28,7 +28,7 @@ const Products = () => {
 
           <View style={styles.enunciadoGeral}>
             <View style={styles.tituloLinha}>
-              <Text style={styles.tituloNovidade}>NOVIDADES</Text>
+              <Text style={styles.tituloNovidade}>Outros Produtos</Text>
               <TouchableOpacity onPress={() => navigation.navigate('Products')}>
               <Text style={styles.tituloTudo}>Ver tudo</Text>
               </TouchableOpacity>
@@ -50,12 +50,11 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsScroll;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    marginTop: windowWidth / 20,
+    marginTop: windowWidth / 5,
 },
 
 linhaIcons: {

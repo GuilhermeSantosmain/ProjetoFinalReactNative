@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         fontWeight: "400",
         justifyContent: 'center',
         alignItems: 'center',
+        textAlign: 'center'
     },
 
     enunciadoGeral: {

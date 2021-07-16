@@ -6,6 +6,7 @@ import firebase from 'firebase';
 import 'firebase/database'
 import { Foundation } from '@expo/vector-icons'
 import { windowWidth } from '../../helpers/dimensions';
+import image from './splash.png'
 
 const Home = () => {
     const navigation = useNavigation()
@@ -24,7 +25,7 @@ const Home = () => {
 
     if (adm) {
         return (
-            // <ImageBackground source={{ uri: "https://www.napratica.org.br/wp-content/uploads/2018/09/curso-de-administra%C3%A7%C3%A3o.jpg" }} style={styles.container}>
+            <ImageBackground source={image} style={styles.container}>
                 <View style={styles.inputsForm}>
                     <View>
                 <View style={styles.userDatail}>
@@ -76,11 +77,11 @@ const Home = () => {
                 </View>
                 </View>
                 </View>
-            // </ImageBackground>
+            </ImageBackground>
         )
     } else {
         return (
-            // <ImageBackground source={{ uri: "https://pbs.twimg.com/media/BtYBWwZIQAAcPuw?format=jpg&name=small" }} style={styles.container}>
+            <ImageBackground source={image} style={styles.container}>
                 <View>
                 <View style={styles.userDatail}>
                     <Text style={styles.greetings}>
@@ -114,7 +115,7 @@ const Home = () => {
                     </TouchableOpacity>
                 </View>
                 </View>
-            // </ImageBackground>
+            </ImageBackground>
         )
     }
 }

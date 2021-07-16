@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { windowWidth, windowHeight } from '../../helpers/dimensions'
 import { AntDesign } from '@expo/vector-icons'
+import ProductsScroll from '../../components/product/Body'
 
 
 const Product = ({ route, navigation }) => {
@@ -106,6 +107,7 @@ const Product = ({ route, navigation }) => {
                 </TouchableOpacity>
 
             </View>
+            <ProductsScroll />
         </ScrollView>
     )
 }
