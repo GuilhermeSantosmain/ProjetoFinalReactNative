@@ -7,13 +7,6 @@ import ProductCard from '../Card/index';
 
 
 const Body = () => {
- 
-    const [produtos, setProdutos] = useState([]);
-    const { http } = useContext(AuthContext)
-    useEffect(() => {
-        http.get('produto/todos').then((response) => setProdutos(response.data)).catch(error => console.warn(error))
-      
-    }, [])
 
     const { cart, closeBuy } = useContext(AuthContext)
     const navigation = useNavigation();
@@ -32,9 +25,9 @@ const Body = () => {
 
                 <View style={styles.produtcs}>
                     <FlatList
-                    numColumns={2}
+                    numColumns={1}
                     contentContainerStyle={styles.flatList}
-                    data={produtos}
+                    data={cart}
                     renderItem={({ item }) => <ProductCard item={item} navigation={navigation} />}
                     keyExtractor={(item) => item.id}
                     pagingEnabled
