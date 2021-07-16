@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import {
   View,
   FlatList,
-  StyleSheet,
-  Dimensions
+  StyleSheet
 } from "react-native";
 import { AuthContext } from "../../../contexts/auth";
 import ProductCard from '../Card/index';

@@ -42,7 +42,7 @@ function ProductRegister() {
 
 
     return (
-
+<ScrollView>
             <View style={styles.body}>
                 <View style={styles.form}>
 
@@ -123,7 +123,7 @@ function ProductRegister() {
             </View>
 
 
-
+            </ScrollView>
     );
 }
 
