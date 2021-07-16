@@ -42,7 +42,7 @@ function ProductRegister() {
 
 
     return (
-
+<TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
             <View style={styles.body}>
                 <View style={styles.form}>
 
@@ -121,6 +121,8 @@ function ProductRegister() {
 
                 </View >
             </View>
+
+</TouchableWithoutFeedback>
 
 
 

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { AuthContext } from '../../contexts/auth'
 
 
@@ -21,6 +21,7 @@ function CategoryRegister() {
     }
 
     return (
+        <TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
         <View style={styles.inputs}>
 
             <View style={styles.txts}>
@@ -47,6 +48,8 @@ function CategoryRegister() {
             </View>
 
         </View>
+
+        </TouchableWithoutFeedback>
     );
 }
 
