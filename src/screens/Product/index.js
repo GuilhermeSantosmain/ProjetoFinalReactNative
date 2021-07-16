@@ -13,8 +13,14 @@ const Product = ({ route, navigation }) => {
     const [produto, setProduto] = useState({})
     const [quantidade, setQuantidade] = useState(null)
     const [count, setCount] = useState(0);
-    const add = () => setCount(incremento => incremento + 1);
-    const deletar = () => {if(count<= 0){} else{setCount(decremento => decremento - 1)}}  ;
+    const add = () => setCount(incremento => {
+            setQuantidade(incremento + 1)
+            return incremento + 1
+            });
+
+    const deletar = () => {if(count<= 0){} else{setCount(decremento =>{
+        setQuantidade(decremento - 1)
+        return decremento - 1})}}  ;
 
 
     useEffect(() => {
@@ -83,7 +89,7 @@ const Product = ({ route, navigation }) => {
                         </TouchableOpacity>
 
                         <View style={styles.cxQtd}>
-                            <Text  value={(e) => setQuantidade(e)} style={styles.qtd}> {count}</Text>
+                            <Text style={styles.qtd}> {count}</Text>
                         </View>
 
                         <TouchableOpacity style={styles.button} onPress={deletar}>

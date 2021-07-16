@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import { windowWidth } from '../../../helpers/dimensions';
 
 const styles = StyleSheet.create({
   body:{
@@ -27,7 +28,24 @@ const styles = StyleSheet.create({
     },
     bntText: {
       color: "#fff",
-    }
+    },
+
+    finalizaBtn:{
+      backgroundColor: '#000',
+      borderRadius: 10,
+      width: '50%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginLeft: 20, 
+    },
+
+    finalizaTxt:{
+      color: '#fff',
+      padding: windowWidth / 45,
+      fontSize: 20,
+
+    },
+
   });
 
   export default styles;

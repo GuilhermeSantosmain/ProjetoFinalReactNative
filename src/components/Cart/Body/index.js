@@ -18,11 +18,24 @@ const Body = () => {
 
     } else {
         return (
-            <View>
-                <TouchableOpacity onPress={() => closeBuy()}>
-                    <Text>
+            <View style={styles.finaliza}>
+
+                <View style={styles.produtcs}>
+                    <FlatList
+                    numColumns={2}
+                    contentContainerStyle={styles.flatList}
+                    data={produtos}
+                    renderItem={({ item }) => <ProductCard item={item} navigation={navigation} />}
+                    keyExtractor={(item) => item.id}
+                    pagingEnabled
+                    />
+                </View>
+                
+                <TouchableOpacity style={styles.finalizaBtn} onPress={() => closeBuy()}>
+                    <Text style={styles.finalizaTxt}>
                         Finalizar compra
                     </Text>
+                    
                 </TouchableOpacity>
             </View>
         )
